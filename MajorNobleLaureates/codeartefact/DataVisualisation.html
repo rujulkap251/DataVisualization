@@ -1,0 +1,3582 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Noble Laureates</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+        <script type='text/javascript' src='http://localhost:8000/p5.dom.js'></script>
+        <!-- <script type="text/javascript" src="C:/Users/rujulk/Desktop/country_noble.json"></script> -->
+        <script>
+            let xaxis;
+            let  pg;
+            var noblepr;	
+            var myrad = [];
+            var myx = [];
+            var myy = [];
+            var j = 0;
+            function preload(){
+                let url ='http://localhost:8000/country_noble.json';
+                noblepr = loadJSON(url);
+            angleMode(DEGREES)
+            img = loadImage('man.png');
+            female_img = loadImage('female.png');
+            
+            }
+            
+            function setup() {
+                createCanvas(1350, 560);
+                //Axis
+                yaxis = new Axis(90, 0, 90, height)
+                xaxis = new Axis(0, 500, width, 500)
+                //Axis Arrow
+                xaxisArrow = new Axisarrow(1340, 494, width, 500, 1340, 507)
+                yaxisArrow = new Axisarrow(84, 10, 90, 0, 97, 10)
+                //Axis Ticks
+                xaxisTicks = new Axisticks(90, 66, 498, 500,1)
+                yaxisTicks = new Axisticks(500, -125, 90, 94,0)
+                //Dashed Line
+                amerdashline = new ContinentSeg(90+66+66+35)
+                europedashline = new ContinentSeg(90+66+66+66+66+66+66+66+66+66+66+45)
+                asiadashline = new ContinentSeg(90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+35)
+                oceaniadashline = new ContinentSeg(90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+25)
+                console.log(noblepr)
+                
+                //Minigraph
+                yminiaxis = new Axis(90, 0, 90, height)
+                xminiaxis = new Axis(0, 500, width, 500)
+                
+                
+            }
+
+            function draw() {
+                background(0);
+                
+                //Axis
+                xaxis.drawline() 
+                yaxis.drawline()
+                //Axis Arrow
+                yaxisArrow.axisarrows()
+                xaxisArrow.axisarrows()
+                //Axis Ticks
+                xaxisTicks.ticks()
+                yaxisTicks.ticks()
+                //Dashed Line
+                amerdashline.drawdashedline()
+                europedashline.drawdashedline()
+                asiadashline.drawdashedline()
+                oceaniadashline.drawdashedline()
+                
+                //Continent Texts
+                textStyle(NORMAL);
+                smooth()
+                textFont('Helvetica');
+                textSize(20);
+                fill('darkcyan');
+                text("America", 90+56, 50-7); 
+                text("Europe", 90+66+66+66+66+66+66, 50-7); 
+                text("Asia", 90+66+66+66+66+66+66+66+66+66+66+66+66+25, 50-7); 
+                text("Ocenia", 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66, 50-7); 
+                text("Africa", 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+25, 50-7);        
+                fill(0);
+                textStyle(NORMAL);
+                noSmooth()
+                textSize(12);
+                textFont('Helvetica');
+                
+                //Drawing Bubbles
+                strokeWeight(1);
+                stroke (0);
+                var  p;
+                var i;
+                for(i=90+66;i<width;i=i+66){
+                    if(j==0){
+                        smooth();
+                        fill(225,87,89)
+                        rotate(0);
+                        p = map(noblepr.country[j].awards, 0, 400, 500, 0);
+                        if(i < 90+66+66+35){
+                        stroke (225,87,89);
+                        }
+                        ellipse(i, p, 100)
+                        append(myrad, 100);
+                        append(myx, i);
+                        append(myy, p);
+                        stroke (0);
+                        fill(255,255,255)
+                        noSmooth();
+                        j=j+1
+                    }
+                    else{
+                        smooth();
+                        noFill();
+                        rotate(0);
+                        p = map(noblepr.country[j].awards, 0, 400, 500, 0);
+                        if(i < 90+66+66+35){
+                            fill(225,87,89)
+                            stroke (225,87,89);
+                        }
+                        else if(i > 90+66+66+35 && i < 90+66+66+66+66+66+66+66+66+66+66+45){
+                            fill(118,183,178)
+                            stroke (118,183,178);
+                        }
+                        else if(i > 90+66+66+66+66+66+66+66+66+66+66+45 && i < 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+35){
+                            fill(242,142,43)//78,121,167
+                            stroke (242,142,43);//78,121,167
+                        }
+                        else if(i > 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+35 && i < 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+25){
+                            fill(78,121,167)//
+                            stroke (78,121,167);//
+                        }
+                        else if(i > 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+25){
+                            fill(176,122,161)
+                            stroke (176,122,161);
+                        }
+                        else{
+                            stroke (0);
+                        }
+                        r = map(noblepr.country[j].awards, 0, 200, 0, 100);
+                        addt=0
+                        if(j==15){
+                            addt=-2
+                        }
+                        ellipse(i, p+addt, r)
+                        append(myrad, r);
+                        append(myx, i);
+                        append(myy, p);
+                        stroke (0);
+                        fill(255,255,255)
+                        noSmooth();
+                        if(j<17){
+                            j=j+1
+                        }
+                        else{
+                            break;
+                        }
+                    }    
+                }
+                
+                //Hover Functionality
+                for(t=0;t<=17;t++){
+                    
+                    if(dist(mouseX, mouseY, myx[t], myy[t]) < (myrad[t]/2)){
+                        stroke (255);
+                        if( myx[t] < 90+66+66+35){
+                            fill(225,87,89)
+                        }
+                        else if( myx[t] > 90+66+66+35 &&  myx[t] < 90+66+66+66+66+66+66+66+66+66+66+45){
+                            fill(118,183,178)
+                        }
+                        else if(myx[t] > 90+66+66+66+66+66+66+66+66+66+66+45 &&  myx[t] < 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+35){
+                            fill(242,142,43)
+                        }
+                        else if( myx[t] > 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+35 &&  myx[t] < 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+25){
+                            fill(78,121,167)
+                        }
+                        else if( myx[t] > 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+25){
+                            fill(176,122,161)                            
+                        }
+                        addt=0
+                        if(t==15){
+                            addt=-2
+                        }
+                        ellipse(myx[t], myy[t]+addt,myrad[t] +7)
+                        stroke(0)
+                        textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(15);
+                        text(noblepr.country[t].awards, myx[t], myy[t]-(myrad[t]/2)-10);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+                        stroke (0);
+                   }
+                    else{
+                        noStroke()
+                        fill(0)
+                        rect(myx[t]-10,myy[t]-(myrad[t]/2)-10-12-2,35,21)
+                        stroke(0)
+                        fill(255)
+                        if( myx[t] < 90+66+66+35){
+                            fill(225,87,89)
+                            ellipse(myx[t], myy[t],myrad[t] +7)
+                            fill(255)
+                            stroke (225,87,89);
+                        }
+                        else if( myx[t] > 90+66+66+35 &&  myx[t] < 90+66+66+66+66+66+66+66+66+66+66+45){
+                            fill(118,183,178)
+                            ellipse(myx[t], myy[t],myrad[t] +7)
+                            fill(255)
+                            stroke (118,183,178);
+                        }
+                        else if(myx[t] > 90+66+66+66+66+66+66+66+66+66+66+45 &&  myx[t] < 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+35){
+                            fill(242,142,43)
+                            ellipse(myx[t], myy[t],myrad[t]+7 )
+                            fill(255)
+                            stroke (242,142,43);
+                        }
+                        else if( myx[t] > 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+35 &&  myx[t] < 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+25){
+                            addt=0
+                            if(t==15){
+                                addt=-2
+                            }
+                            fill(78,121,167)
+                            ellipse(myx[t], myy[t]+addt,myrad[t] +7)
+                            fill(255)
+                            stroke (78,121,167);
+                        }
+                        else if( myx[t] > 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+25){
+                            fill(176,122,161)                            
+                            ellipse(myx[t], myy[t],myrad[t] +7)
+                            fill(255)
+                            stroke (176,122,161);
+                        }
+                        else{
+                            stroke (0);
+                        }
+                        
+                        stroke (0);
+                    }
+                    
+                }
+
+
+                fill(0)
+                ellipse(myx[t], 493,8 )
+                fill(255)
+                
+                //Inner Graphs
+                if(dist(mouseX, mouseY, myx[0], myy[0]) < (myrad[0]/2)){
+                    noFill()
+                    stroke(255)
+                    rect(350,60,435,265)
+                    stroke(0)
+                    fill(255)
+                    
+                    //Arc Chart
+
+                    //legends
+                    textFont('Georgia');
+                            textStyle(ITALIC);
+                            smooth()
+                            textSize(12);
+                            text("Chemistry", 350+340+20, 200+20);
+                            text("Economics", 350+340+20, 200+30+3);
+                            text("Literature", 350+340+20, 200+40+6);
+                            text("Medicine", 350+340+20, 200+50+9);
+                            text("Peace", 350+340+20, 200+60+12);
+                            text("Physics", 350+340+20, 200+70+15);
+                            
+                            textStyle(NORMAL);
+                            noSmooth()
+                            textSize(12);
+                            textFont('Helvetica');
+
+                            textFont('Georgia');
+                            textStyle(ITALIC);
+                            smooth()
+                            textSize(12);
+                            text(noblepr.country[0].chemistry, 300+300+43, 200-14+14+75);
+                            text(noblepr.country[0].economics, 300+300-93, 200-14+14+119);
+                            text(noblepr.country[0].literature, 300+300-145, 200-14+14+85);
+                            text(noblepr.country[0].medicine, 300+300-145-30, 200-14+14+85-105);
+                            text(noblepr.country[0].peace, 300+300-100+10, 200-14+14+85-195-3);
+                            text(noblepr.country[0].physics, 300+300-100+130, 200-14+14+85-170);
+                            
+                            textStyle(NORMAL);
+                            noSmooth()
+                            textSize(12);
+                            textFont('Helvetica');
+
+                    
+                    fill(73,87,98)
+                    rect(350+340,200+10,10,10)
+                    fill(0)
+                    fill(144,202,249)
+                    rect(350+340,200+20+3,10,10)
+                    fill(0)
+                    fill(100,181,246)
+                    rect(350+340,200+30+6,10,10)
+                    fill(0)
+                    fill(66,165,245)
+                    rect(350+340,200+40+9,10,10)
+                    fill(0)
+                    fill(33,150,243)
+                    rect(350+340,200+50+12,10,10)
+                    fill(0)
+                    fill(25,118,210)
+                    rect(350+340,200+60+15,10,10)
+                    fill(0)
+
+
+
+                    var sum = noblepr.country[0].chemistry + noblepr.country[0].economics + noblepr.country[0].literature+ noblepr.country[0].medicine+ noblepr.country[0].peace+ noblepr.country[0].physics
+                    chem = (noblepr.country[0].chemistry/sum) * 100
+                    eco = (noblepr.country[0].economics/sum) * 100
+                    lit = (noblepr.country[0].literature/sum) * 100
+                    med = (noblepr.country[0].medicine/sum) * 100
+                    peace = (noblepr.country[0].peace/sum) * 100
+                    phy = (noblepr.country[0].physics/sum) * 100
+                    
+                    chem_map = map(chem, 0, 100, 0, 360);
+                    eco_map = map(eco, 0, 100, 0, 360);
+                    lit_map = map(lit, 0, 100, 0, 360);
+                    med_map = map(med, 0, 100, 0, 360);
+                    peace_map = map(peace, 0, 100, 0, 360);
+                    phy_map = map(phy, 0, 100, 0, 360);
+                    
+                    fill(73,87,98)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, 0, chem_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, 0,chem_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(144,202,249)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(100,181,246)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(66,165,245)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(33,150,243)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(25,118,210)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    //Pie Chart
+                    var sum = noblepr.country[0].male + noblepr.country[0].female
+                    m = (noblepr.country[0].male/sum) * 100
+                    f = (noblepr.country[0].female/sum) * 100
+                    m_map = map(m, 0, 100, 0, 360);
+                    f_map = map(f, 0, 100, 0, 360);
+                    
+                    
+                    fill(91,155,213)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 140, 140, 0, m_map, PIE);
+                    fill(237,125,49)
+                    arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    textFont('Georgia');
+                            textStyle(ITALIC);
+                            smooth()
+                            textSize(12);
+                            text(noblepr.country[0].male, 300+162+30, 200-14+14);
+                            text(noblepr.country[0].female, 300+321-20, 200-14+14);
+                            textStyle(NORMAL);
+                            noSmooth()
+                            textSize(12);
+                            textFont('Helvetica');
+                
+                    image(img, 300+162, 200-14 ,15,20);
+                    image(female_img, 300+321, 200-14 ,15,23);
+                }
+                else if(dist(mouseX, mouseY, myx[1], myy[1]) < (myrad[1]/2)){
+                
+                    noFill()
+                    stroke(255)
+                    rect(350,60,435,265)
+                    stroke(0)
+                    fill(255)
+                    
+                    //Arc Chart
+
+                    //legends
+                    textFont('Georgia');
+                            textStyle(ITALIC);
+                            smooth()
+                            textSize(12);
+                            text("Chemistry", 350+340+20, 200+20);
+                            text("Economics", 350+340+20, 200+30+3);
+                            text("Literature", 350+340+20, 200+40+6);
+                            text("Medicine", 350+340+20, 200+50+9);
+                            text("Peace", 350+340+20, 200+60+12);
+                            text("Physics", 350+340+20, 200+70+15);
+                            
+                            textStyle(NORMAL);
+                            noSmooth()
+                            textSize(12);
+                            textFont('Helvetica');
+
+                            textFont('Georgia');
+                            textStyle(ITALIC);
+                            smooth()
+                            textSize(12);
+                            text(noblepr.country[1].chemistry, 300+300+35, 200-14+14+84);
+                            text(noblepr.country[1].economics, 300+300-110, 200-14+14+110);
+                            text(noblepr.country[1].literature, 300+300-172, 200-14+14+85-60);
+                            text(noblepr.country[1].medicine, 300+300-145-30+48, 200-14+14+85-180);
+                            text(noblepr.country[1].peace, 300+300-100+80, 200-14+14+85-195-1);
+                            text(noblepr.country[1].physics, 300+300-100+130+20, 200-14+14+85-150+5);
+                            
+                            textStyle(NORMAL);
+                            noSmooth()
+                            textSize(12);
+                            textFont('Helvetica');
+
+                    
+                    fill(73,87,98)
+                    rect(350+340,200+10,10,10)
+                    fill(0)
+                    fill(144,202,249)
+                    rect(350+340,200+20+3,10,10)
+                    fill(0)
+                    fill(100,181,246)
+                    rect(350+340,200+30+6,10,10)
+                    fill(0)
+                    fill(66,165,245)
+                    rect(350+340,200+40+9,10,10)
+                    fill(0)
+                    fill(33,150,243)
+                    rect(350+340,200+50+12,10,10)
+                    fill(0)
+                    fill(25,118,210)
+                    rect(350+340,200+60+15,10,10)
+                    fill(0)
+
+
+
+                    var sum = noblepr.country[1].chemistry + noblepr.country[1].economics + noblepr.country[1].literature+ noblepr.country[1].medicine+ noblepr.country[1].peace+ noblepr.country[1].physics
+                    chem = (noblepr.country[1].chemistry/sum) * 100
+                    eco = (noblepr.country[1].economics/sum) * 100
+                    lit = (noblepr.country[1].literature/sum) * 100
+                    med = (noblepr.country[1].medicine/sum) * 100
+                    peace = (noblepr.country[1].peace/sum) * 100
+                    phy = (noblepr.country[1].physics/sum) * 100
+                    
+                    chem_map = map(chem, 0, 100, 0, 360);
+                    eco_map = map(eco, 0, 100, 0, 360);
+                    lit_map = map(lit, 0, 100, 0, 360);
+                    med_map = map(med, 0, 100, 0, 360);
+                    peace_map = map(peace, 0, 100, 0, 360);
+                    phy_map = map(phy, 0, 100, 0, 360);
+                    
+                    fill(73,87,98)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, 0, chem_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, 0,chem_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(144,202,249)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(100,181,246)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(66,165,245)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(33,150,243)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(25,118,210)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    //Pie Chart
+                    //Cal
+                    var sum = noblepr.country[1].male + noblepr.country[1].female
+                    m = (noblepr.country[1].male/sum) * 100
+                    f = (noblepr.country[1].female/sum) * 100
+                    m_map = map(m, 0, 100, 0, 360);
+                    f_map = map(f, 0, 100, 0, 360);
+                    
+                    
+                    fill(91,155,213)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 140, 140, 0, m_map, PIE);
+                    fill(237,125,49)
+                    arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    textFont('Georgia');
+                            textStyle(ITALIC);
+                            smooth()
+                            textSize(12);
+                            text(noblepr.country[1].male, 300+162+30, 200-14+14);
+                            text(noblepr.country[1].female, 300+321-20, 200-14+14);
+                            textStyle(NORMAL);
+                            noSmooth()
+                            textSize(12);
+                            textFont('Helvetica');
+                
+                    image(img, 300+162, 200-14 ,15,20);
+                    image(female_img, 300+321, 200-14 ,15,23);
+                }
+                else if(dist(mouseX, mouseY, myx[2], myy[2]) < (myrad[2]/2)){
+                    
+                    noFill()
+                    stroke(255)
+                    rect(350,60,435,265)
+                    stroke(0)
+                    fill(255)
+
+                    //Arc Chart
+                    textFont('Georgia');
+                            textStyle(ITALIC);
+                            smooth()
+                            textSize(12);
+                            text("Chemistry", 350+340+20, 200+20);
+                            text("Economics", 350+340+20, 200+30+3);
+                            text("Literature", 350+340+20, 200+40+6);
+                            text("Medicine", 350+340+20, 200+50+9);
+                            text("Peace", 350+340+20, 200+60+12);
+                            text("Physics", 350+340+20, 200+70+15);
+                            
+                            textStyle(NORMAL);
+                            noSmooth()
+                            textSize(12);
+                            textFont('Helvetica');
+
+                            textFont('Georgia');
+                            textStyle(ITALIC);
+                            smooth()
+                            textSize(12);
+                            text(noblepr.country[2].chemistry, 300+300+35, 200-14+14+84);
+                            text(noblepr.country[2].economics, 300+300-70, 200-14+14+120);
+                            text(noblepr.country[2].literature, 300+300-122, 200-14+14+85+20);
+                            text(noblepr.country[2].medicine, 300+300-145-70+38, 200-14+14+85-105);
+                            text(noblepr.country[2].peace, 300+300-100+80-40, 200-14+14+85-195-5);
+                            text(noblepr.country[2].physics, 300+300-100+130+20-5, 200-14+14+85-150);
+                            
+                            textStyle(NORMAL);
+                            noSmooth()
+                            textSize(12);
+                            textFont('Helvetica');
+
+                    
+                    fill(73,87,98)
+                    rect(350+340,200+10,10,10)
+                    fill(0)
+                    fill(144,202,249)
+                    rect(350+340,200+20+3,10,10)
+                    fill(0)
+                    fill(100,181,246)
+                    rect(350+340,200+30+6,10,10)
+                    fill(0)
+                    fill(66,165,245)
+                    rect(350+340,200+40+9,10,10)
+                    fill(0)
+                    fill(33,150,243)
+                    rect(350+340,200+50+12,10,10)
+                    fill(0)
+                    fill(25,118,210)
+                    rect(350+340,200+60+15,10,10)
+                    fill(0)
+
+
+
+                    var sum = noblepr.country[2].chemistry + noblepr.country[2].economics + noblepr.country[2].literature+ noblepr.country[2].medicine+ noblepr.country[2].peace+ noblepr.country[2].physics
+                    chem = (noblepr.country[2].chemistry/sum) * 100
+                    eco = (noblepr.country[2].economics/sum) * 100
+                    lit = (noblepr.country[2].literature/sum) * 100
+                    med = (noblepr.country[2].medicine/sum) * 100
+                    peace = (noblepr.country[2].peace/sum) * 100
+                    phy = (noblepr.country[2].physics/sum) * 100
+                    
+                    chem_map = map(chem, 0, 100, 0, 360);
+                    eco_map = map(eco, 0, 100, 0, 360);
+                    lit_map = map(lit, 0, 100, 0, 360);
+                    med_map = map(med, 0, 100, 0, 360);
+                    peace_map = map(peace, 0, 100, 0, 360);
+                    phy_map = map(phy, 0, 100, 0, 360);
+                    
+                    fill(73,87,98)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, 0, chem_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, 0,chem_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(144,202,249)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(100,181,246)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(66,165,245)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(33,150,243)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(25,118,210)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    //Pie Chart
+                    var sum = noblepr.country[2].male + noblepr.country[2].female
+                    m = (noblepr.country[2].male/sum) * 100
+                    f = (noblepr.country[2].female/sum) * 100
+                    m_map = map(m, 0, 100, 0, 360);
+                    f_map = map(f, 0, 100, 0, 360);
+                    
+                    
+                    fill(91,155,213)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 140, 140, 0, m_map, PIE);
+                    fill(237,125,49)
+                    arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    textFont('Georgia');
+                            textStyle(ITALIC);
+                            smooth()
+                            textSize(12);
+                            text(noblepr.country[2].male, 300+162+30, 200-14+14);
+                            text(noblepr.country[2].female, 300+321-15, 200-14+17);
+                            textStyle(NORMAL);
+                            noSmooth()
+                            textSize(12);
+                            textFont('Helvetica');
+                
+                    image(img, 300+162, 200-14 ,15,20);
+                    image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[3], myy[3]) < (myrad[3]/2)){
+                
+                    noFill()
+                    stroke(255)
+                    rect(350,60,435,265)
+                    stroke(0)
+                    fill(255)
+
+                    //Arc Chart
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text("Chemistry", 350+340+20, 200+20);
+                    text("Economics", 350+340+20, 200+30+3);
+                    text("Literature", 350+340+20, 200+40+6);
+                    text("Medicine", 350+340+20, 200+50+9);
+                    text("Peace", 350+340+20, 200+60+12);
+                    text("Physics", 350+340+20, 200+70+15);
+                    
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text(noblepr.country[3].chemistry, 300+300+15, 200-14+14+84+15);
+                    text(noblepr.country[3].economics, 300+300-100, 200-14+14+110+2);
+                    text(noblepr.country[3].literature, 300+300-137, 200-14+14+85+10);
+                    text(noblepr.country[3].medicine, 300+300-145-32, 200-14+14+85-100);
+                    text(noblepr.country[3].peace, 300+300-107, 200-14+14+85-190);
+                    text(noblepr.country[3].physics, 300+300-100+130-9, 200-14+14+85-180+5);
+                    
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+
+                    
+                    fill(73,87,98)
+                    rect(350+340,200+10,10,10)
+                    fill(0)
+                    fill(144,202,249)
+                    rect(350+340,200+20+3,10,10)
+                    fill(0)
+                    fill(100,181,246)
+                    rect(350+340,200+30+6,10,10)
+                    fill(0)
+                    fill(66,165,245)
+                    rect(350+340,200+40+9,10,10)
+                    fill(0)
+                    fill(33,150,243)
+                    rect(350+340,200+50+12,10,10)
+                    fill(0)
+                    fill(25,118,210)
+                    rect(350+340,200+60+15,10,10)
+                    fill(0)
+
+
+
+                    var sum = noblepr.country[3].chemistry + noblepr.country[3].economics + noblepr.country[3].literature+ noblepr.country[3].medicine+ noblepr.country[3].peace+ noblepr.country[3].physics
+                    chem = (noblepr.country[3].chemistry/sum) * 100
+                    eco = (noblepr.country[3].economics/sum) * 100
+                    lit = (noblepr.country[3].literature/sum) * 100
+                    med = (noblepr.country[3].medicine/sum) * 100
+                    peace = (noblepr.country[3].peace/sum) * 100
+                    phy = (noblepr.country[3].physics/sum) * 100
+                    
+                    chem_map = map(chem, 0, 100, 0, 360);
+                    eco_map = map(eco, 0, 100, 0, 360);
+                    lit_map = map(lit, 0, 100, 0, 360);
+                    med_map = map(med, 0, 100, 0, 360);
+                    peace_map = map(peace, 0, 100, 0, 360);
+                    phy_map = map(phy, 0, 100, 0, 360);
+                    
+                    fill(73,87,98)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, 0, chem_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, 0,chem_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(144,202,249)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(100,181,246)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(66,165,245)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(33,150,243)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(25,118,210)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    //Pie Chart
+                    var sum = noblepr.country[3].male + noblepr.country[3].female
+                    m = (noblepr.country[3].male/sum) * 100
+                    f = (noblepr.country[3].female/sum) * 100
+                    m_map = map(m, 0, 100, 0, 360);
+                    f_map = map(f, 0, 100, 0, 360);
+                    
+                    
+                    fill(91,155,213)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 140, 140, 0, m_map, PIE);
+                    fill(237,125,49)
+                    arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    textStyle(ITALIC);
+                    smooth()
+                    textFont('Georgia');
+                    textSize(12);
+                    text(noblepr.country[3].male, 300+162+30, 200-14+14);
+                    text(noblepr.country[3].female, 300+321-20, 200-14+18);
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+                
+                    image(img, 300+162, 200-14 ,15,20);
+                    image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[4], myy[4]) < (myrad[4]/2)){
+                //    clear()
+                
+                    noFill()
+                    stroke(255)
+                    rect(350,60,435,265)
+                    stroke(0)
+                    fill(255)
+
+                    //Arc Chart
+                    textStyle(ITALIC);
+                    textFont('Georgia');
+                    smooth()
+                    textSize(12);
+                    text("Chemistry", 350+340+20, 200+20);
+                    text("Economics", 350+340+20, 200+30+3);
+                    text("Literature", 350+340+20, 200+40+6);
+                    text("Medicine", 350+340+20, 200+50+9);
+                    text("Peace", 350+340+20, 200+60+12);
+                    text("Physics", 350+340+20, 200+70+15);
+                    
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text(noblepr.country[4].chemistry, 300+300+15+15+17, 200-14+14+84-16);
+                    text(noblepr.country[4].economics, 300+300-8, 200-14+14+110+2);
+                    text(noblepr.country[4].literature, 300+300-110, 200-14+14+85+10+10+8);
+                    text(noblepr.country[4].medicine, 300+300-145-32, 200-14+14+85-100);
+                    text(noblepr.country[4].peace, 300+300-107+30, 200-14+14+85-198);
+                    text(noblepr.country[4].physics, 300+300-100+130+10+5, 200-14+14+85-180+5+25);
+                    
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+                    
+                    fill(73,87,98)
+                    rect(350+340,200+10,10,10)
+                    fill(0)
+                    fill(144,202,249)
+                    rect(350+340,200+20+3,10,10)
+                    fill(0)
+                    fill(100,181,246)
+                    rect(350+340,200+30+6,10,10)
+                    fill(0)
+                    fill(66,165,245)
+                    rect(350+340,200+40+9,10,10)
+                    fill(0)
+                    fill(33,150,243)
+                    rect(350+340,200+50+12,10,10)
+                    fill(0)
+                    fill(25,118,210)
+                    rect(350+340,200+60+15,10,10)
+                    fill(0)
+
+                    var sum = noblepr.country[4].chemistry + noblepr.country[4].economics + noblepr.country[4].literature+ noblepr.country[4].medicine+ noblepr.country[4].peace+ noblepr.country[4].physics
+                    chem = (noblepr.country[4].chemistry/sum) * 100
+                    eco = (noblepr.country[4].economics/sum) * 100
+                    lit = (noblepr.country[4].literature/sum) * 100
+                    med = (noblepr.country[4].medicine/sum) * 100
+                    peace = (noblepr.country[4].peace/sum) * 100
+                    phy = (noblepr.country[4].physics/sum) * 100
+                    
+                    chem_map = map(chem, 0, 100, 0, 360);
+                    eco_map = map(eco, 0, 100, 0, 360);
+                    lit_map = map(lit, 0, 100, 0, 360);
+                    med_map = map(med, 0, 100, 0, 360);
+                    peace_map = map(peace, 0, 100, 0, 360);
+                    phy_map = map(phy, 0, 100, 0, 360);
+                    
+                    fill(73,87,98)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, 0, chem_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, 0,chem_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(144,202,249)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(100,181,246)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(66,165,245)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(33,150,243)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(25,118,210)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    //Pie Chart
+                    var sum = noblepr.country[4].male + noblepr.country[3].female
+                    m = (noblepr.country[4].male/sum) * 100
+                    f = (noblepr.country[4].female/sum) * 100
+                    m_map = map(m, 0, 100, 0, 360);
+                    f_map = map(f, 0, 100, 0, 360);
+                                    
+                    fill(91,155,213)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 140, 140, 0, m_map, PIE);
+                    fill(237,125,49)
+                    arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text(noblepr.country[4].male, 300+162+30, 200-14+14);
+                    text(noblepr.country[4].female, 300+321-20, 200-14+18);
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+            
+                    image(img, 300+162, 200-14 ,15,20);
+                    image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[5], myy[5]) < (myrad[5]/2)){
+                
+                    noFill()
+                    stroke(255)
+                    rect(350,60,435,265)
+                    stroke(0)
+                    fill(255)
+                    
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text("Chemistry", 350+340+20, 200+20);
+                    text("Economics", 350+340+20, 200+30+3);
+                    text("Literature", 350+340+20, 200+40+6);
+                    text("Medicine", 350+340+20, 200+50+9);
+                    text("Peace", 350+340+20, 200+60+12);
+                    text("Physics", 350+340+20, 200+70+15);
+                    
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text(noblepr.country[5].chemistry, 300+300+15+15+17, 200-14+14+84-16);
+                    text(noblepr.country[5].economics, 300+300-14, 200-14+14+110+5);
+                    text(noblepr.country[5].literature, 300+300-130+7, 200-14+14+85+10+10-12+10);
+                    text(noblepr.country[5].medicine, 300+300-160+5, 200-14+14+85-145);
+                    text(noblepr.country[5].peace, 300+300-107+30+50, 200-14+14+85-198);
+                    text(noblepr.country[5].physics, 300+300-100+130+10+14, 200-14+14+85-180+5+45);
+                    
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+
+                        
+                    fill(73,87,98)
+                    rect(350+340,200+10,10,10)
+                    fill(0)
+                    fill(144,202,249)
+                    rect(350+340,200+20+3,10,10)
+                    fill(0)
+                    fill(100,181,246)
+                    rect(350+340,200+30+6,10,10)
+                    fill(0)
+                    fill(66,165,245)
+                    rect(350+340,200+40+9,10,10)
+                    fill(0)
+                    fill(33,150,243)
+                    rect(350+340,200+50+12,10,10)
+                    fill(0)
+                    fill(25,118,210)
+                    rect(350+340,200+60+15,10,10)
+                    fill(0)
+
+
+
+                    var sum = noblepr.country[5].chemistry + noblepr.country[5].economics + noblepr.country[5].literature+ noblepr.country[5].medicine+ noblepr.country[5].peace+ noblepr.country[5].physics
+                    chem = (noblepr.country[5].chemistry/sum) * 100
+                    eco = (noblepr.country[5].economics/sum) * 100
+                    lit = (noblepr.country[5].literature/sum) * 100
+                    med = (noblepr.country[5].medicine/sum) * 100
+                    peace = (noblepr.country[5].peace/sum) * 100
+                    phy = (noblepr.country[5].physics/sum) * 100
+                    
+                    chem_map = map(chem, 0, 100, 0, 360);
+                    eco_map = map(eco, 0, 100, 0, 360);
+                    lit_map = map(lit, 0, 100, 0, 360);
+                    med_map = map(med, 0, 100, 0, 360);
+                    peace_map = map(peace, 0, 100, 0, 360);
+                    phy_map = map(phy, 0, 100, 0, 360);
+                    
+                    fill(73,87,98)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, 0, chem_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, 0,chem_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(144,202,249)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(100,181,246)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(66,165,245)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(33,150,243)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(25,118,210)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    //Pie Chart
+                    var sum = noblepr.country[5].male + noblepr.country[3].female
+                    m = (noblepr.country[5].male/sum) * 100
+                    f = (noblepr.country[5].female/sum) * 100
+                    m_map = map(m, 0, 100, 0, 360);
+                    f_map = map(f, 0, 100, 0, 360);
+                        
+                    fill(91,155,213)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 140, 140, 0, m_map, PIE);
+                    fill(237,125,49)
+                    arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text(noblepr.country[5].male, 300+162+30, 200-14+14);
+                    text(noblepr.country[5].female, 300+321-20, 200-14+18);
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+                
+                    image(img, 300+162, 200-14 ,15,20);
+                    image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[6], myy[6]) < (myrad[6]/2)){
+                
+                    noFill()
+                    stroke(255)
+                    rect(350,60,435,265)
+                    stroke(0)
+                    fill(255)
+                    
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text("Chemistry", 350+340+20, 200+20);
+                    text("Economics", 350+340+20, 200+30+3);
+                    text("Literature", 350+340+20, 200+40+6);
+                    text("Medicine", 350+340+20, 200+50+9);
+                    text("Peace", 350+340+20, 200+60+12);
+                    text("Physics", 350+340+20, 200+70+15);
+                    
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text(noblepr.country[6].chemistry, 300+300+15+15+17, 200-14+14+84-16);
+                    text(noblepr.country[6].economics, 300+300-5, 200-14+14+110+5-2);
+                    text(noblepr.country[6].literature, 300+300-130+7+45, 200-14+14+85+10+10-12+10+15);
+                    text(noblepr.country[6].medicine, 300+300-160+14-25, 200-14+14+85-75);
+                    text(noblepr.country[6].peace, 300+300-107+30-30, 200-14+14+85-198+10);
+                    text(noblepr.country[6].physics, 300+300-100+130+10+14-25, 200-14+14+85-180+5+45-40);
+                    
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+                    
+                    fill(73,87,98)
+                    rect(350+340,200+10,10,10)
+                    fill(0)
+                    fill(144,202,249)
+                    rect(350+340,200+20+3,10,10)
+                    fill(0)
+                    fill(100,181,246)
+                    rect(350+340,200+30+6,10,10)
+                    fill(0)
+                    fill(66,165,245)
+                    rect(350+340,200+40+9,10,10)
+                    fill(0)
+                    fill(33,150,243)
+                    rect(350+340,200+50+12,10,10)
+                    fill(0)
+                    fill(25,118,210)
+                    rect(350+340,200+60+15,10,10)
+                    fill(0)
+
+                    var sum = noblepr.country[6].chemistry + noblepr.country[6].economics + noblepr.country[6].literature+ noblepr.country[6].medicine+ noblepr.country[6].peace+ noblepr.country[6].physics
+                    chem = (noblepr.country[6].chemistry/sum) * 100
+                    eco = (noblepr.country[6].economics/sum) * 100
+                    lit = (noblepr.country[6].literature/sum) * 100
+                    med = (noblepr.country[6].medicine/sum) * 100
+                    peace = (noblepr.country[6].peace/sum) * 100
+                    phy = (noblepr.country[6].physics/sum) * 100
+                    
+                    chem_map = map(chem, 0, 100, 0, 360);
+                    eco_map = map(eco, 0, 100, 0, 360);
+                    lit_map = map(lit, 0, 100, 0, 360);
+                    med_map = map(med, 0, 100, 0, 360);
+                    peace_map = map(peace, 0, 100, 0, 360);
+                    phy_map = map(phy, 0, 100, 0, 360);
+                    
+                    fill(73,87,98)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, 0, chem_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, 0,chem_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(144,202,249)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(100,181,246)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(66,165,245)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(33,150,243)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(25,118,210)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    //Pie Chart
+                    var sum = noblepr.country[6].male + noblepr.country[3].female
+                    m = (noblepr.country[6].male/sum) * 100
+                    f = (noblepr.country[6].female/sum) * 100
+                    m_map = map(m, 0, 100, 0, 360);
+                    f_map = map(f, 0, 100, 0, 360);      
+                    
+                    fill(91,155,213)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 140, 140, 0, m_map, PIE);
+                    fill(237,125,49)
+                    arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text(noblepr.country[6].male, 300+162+30, 200-14+14);
+                    text(noblepr.country[6].female, 300+321-20, 200-14+18);
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+                
+                    image(img, 300+162, 200-14 ,15,20);
+                    image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[7], myy[7]) < (myrad[7]/2)){
+                
+                    noFill()
+                    stroke(255)
+                    rect(350,60,435,265)
+                    stroke(0)
+                    fill(255)
+
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text("Chemistry", 350+340+20, 200+20);
+                    text("Economics", 350+340+20, 200+30+3);
+                    text("Literature", 350+340+20, 200+40+6);
+                    text("Medicine", 350+340+20, 200+50+9);
+                    text("Peace", 350+340+20, 200+60+12);
+                    text("Physics", 350+340+20, 200+70+15);
+                    
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text(noblepr.country[7].chemistry, 300+300+15+15+17+10+7, 200-14+14+84-16-44);
+                    text(noblepr.country[7].economics, 300+300-5+30+20+8, 200-14+14+110+5-2-24-20-12);
+                    text(noblepr.country[7].literature, 300+300-130+7+45+30, 200-14+14+85+10+10-12+10+15+3);
+                    text(noblepr.country[7].medicine, 300+300-160+14-25+5, 200-14+14+85-75-35-5);
+                    text(noblepr.country[7].peace, 300+300-107+30-30+20+10+5, 200-14+14+85-198+10-20+10);
+                    text(noblepr.country[7].physics, 300+300-100+130+10+14-25, 200-14+14+85-180+5+45-40);
+                    
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+
+                    
+                    fill(73,87,98)
+                    rect(350+340,200+10,10,10)
+                    fill(0)
+                    fill(144,202,249)
+                    rect(350+340,200+20+3,10,10)
+                    fill(0)
+                    fill(100,181,246)
+                    rect(350+340,200+30+6,10,10)
+                    fill(0)
+                    fill(66,165,245)
+                    rect(350+340,200+40+9,10,10)
+                    fill(0)
+                    fill(33,150,243)
+                    rect(350+340,200+50+12,10,10)
+                    fill(0)
+                    fill(25,118,210)
+                    rect(350+340,200+60+15,10,10)
+                    fill(0)
+
+                    var sum = noblepr.country[7].chemistry + noblepr.country[7].economics + noblepr.country[7].literature+ noblepr.country[7].medicine+ noblepr.country[7].peace+ noblepr.country[7].physics
+                    chem = (noblepr.country[7].chemistry/sum) * 100
+                    eco = (noblepr.country[7].economics/sum) * 100
+                    lit = (noblepr.country[7].literature/sum) * 100
+                    med = (noblepr.country[7].medicine/sum) * 100
+                    peace = (noblepr.country[7].peace/sum) * 100
+                    phy = (noblepr.country[7].physics/sum) * 100
+                    
+                    chem_map = map(chem, 0, 100, 0, 360);
+                    eco_map = map(eco, 0, 100, 0, 360);
+                    lit_map = map(lit, 0, 100, 0, 360);
+                    med_map = map(med, 0, 100, 0, 360);
+                    peace_map = map(peace, 0, 100, 0, 360);
+                    phy_map = map(phy, 0, 100, 0, 360);
+                    
+                    fill(73,87,98)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, 0, chem_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, 0,chem_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(144,202,249)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(100,181,246)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(66,165,245)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(33,150,243)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    fill(25,118,210)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    fill(0)
+                    arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    //Pie Chart
+                    var sum = noblepr.country[7].male + noblepr.country[7].female
+                    m = (noblepr.country[7].male/sum) * 100
+                    f = (noblepr.country[7].female/sum) * 100
+                    m_map = map(m, 0, 100, 0, 360);
+                    f_map = map(f, 0, 100, 0, 360);
+                    
+                    
+                    fill(91,155,213)
+                    strokeWeight(1)
+                    stroke(0)
+                    arc(550, 200, 140, 140, 0, m_map, PIE);
+                    fill(237,125,49)
+                    arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                    stroke(0)
+                    fill(255)
+                    strokeWeight(1)
+                
+                    textFont('Georgia');
+                    textStyle(ITALIC);
+                    smooth()
+                    textSize(12);
+                    text(noblepr.country[7].male, 300+162+30, 200-14+14);
+                    text(noblepr.country[7].female, 300+321-20, 200-14+18);
+                    textStyle(NORMAL);
+                    noSmooth()
+                    textSize(12);
+                    textFont('Helvetica');
+                
+                    image(img, 300+162, 200-14 ,15,20);
+                    image(female_img, 300+321, 200-14 ,15,23);
+                    
+                }
+                else if(dist(mouseX, mouseY, myx[8], myy[8]) < (myrad[8]/2)){
+                
+                noFill()
+                stroke(255)
+                rect(350,60,435,265)
+                stroke(0)
+                fill(255)
+
+                textFont('Georgia');
+                textStyle(ITALIC);
+                smooth()
+                textSize(12);
+                text("Chemistry", 350+340+20, 200+20);
+                text("Economics", 350+340+20, 200+30+3);
+                text("Literature", 350+340+20, 200+40+6);
+                text("Medicine", 350+340+20, 200+50+9);
+                text("Peace", 350+340+20, 200+60+12);
+                text("Physics", 350+340+20, 200+70+15);
+                
+                textStyle(NORMAL);
+                noSmooth()
+                textSize(12);
+                textFont('Helvetica');
+
+                textFont('Georgia');
+                textStyle(ITALIC);
+                smooth()
+                textSize(12);
+                text(noblepr.country[8].chemistry, 300+300+15+15+17+10+7-53, 200-14+14+84-16-44+90-10);
+                text(noblepr.country[8].economics, 300+300-5+30+20+8-200+2, 200-14+14+110+5-2-24-15+4);
+                text(noblepr.country[8].literature, 300+300-130+7+45+30-120+5, 200-14+14+85+10+10-12+10+15+3-100+20);
+                text(noblepr.country[8].medicine, 300+300-160+14-25+40, 200-14+14+85-75-35-65+5);
+                text(noblepr.country[8].peace, 300+300-107+30-30+20+10+5+70-10+6, 200-14+14+85-198+10-20+15+5-1);
+                text(noblepr.country[8].physics, 300+300-100+130+10+14-25+20, 200-14+14+85-180+5+45-40+30);
+                
+                textStyle(NORMAL);
+                noSmooth()
+                textSize(12);
+                textFont('Helvetica');
+
+                
+                fill(73,87,98)
+                rect(350+340,200+10,10,10)
+                fill(0)
+                fill(144,202,249)
+                rect(350+340,200+20+3,10,10)
+                fill(0)
+                fill(100,181,246)
+                rect(350+340,200+30+6,10,10)
+                fill(0)
+                fill(66,165,245)
+                rect(350+340,200+40+9,10,10)
+                fill(0)
+                fill(33,150,243)
+                rect(350+340,200+50+12,10,10)
+                fill(0)
+                fill(25,118,210)
+                rect(350+340,200+60+15,10,10)
+                fill(0)
+
+
+
+                var sum = noblepr.country[8].chemistry + noblepr.country[8].economics + noblepr.country[8].literature+ noblepr.country[8].medicine+ noblepr.country[8].peace+ noblepr.country[8].physics
+                chem = (noblepr.country[8].chemistry/sum) * 100
+                eco = (noblepr.country[8].economics/sum) * 100
+                lit = (noblepr.country[8].literature/sum) * 100
+                med = (noblepr.country[8].medicine/sum) * 100
+                peace = (noblepr.country[8].peace/sum) * 100
+                phy = (noblepr.country[8].physics/sum) * 100
+                
+                chem_map = map(chem, 0, 100, 0, 360);
+                eco_map = map(eco, 0, 100, 0, 360);
+                lit_map = map(lit, 0, 100, 0, 360);
+                med_map = map(med, 0, 100, 0, 360);
+                peace_map = map(peace, 0, 100, 0, 360);
+                phy_map = map(phy, 0, 100, 0, 360);
+                
+                fill(73,87,98)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, 0, chem_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, 0,chem_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(144,202,249)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(100,181,246)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(66,165,245)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(33,150,243)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(25,118,210)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                //Pie Chart
+                //Cal
+                var sum = noblepr.country[8].male + noblepr.country[8].female
+                m = (noblepr.country[8].male/sum) * 100
+                f = (noblepr.country[8].female/sum) * 100
+                m_map = map(m, 0, 100, 0, 360);
+                f_map = map(f, 0, 100, 0, 360);
+                
+                
+                fill(91,155,213)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 140, 140, 0, m_map, PIE);
+                fill(237,125,49)
+                arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[8].male, 300+162+30, 200-14+14);
+                        text(noblepr.country[8].female, 300+321-20, 200-14+18);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+               
+                image(img, 300+162, 200-14 ,15,20);
+                image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[9], myy[9]) < (myrad[9]/2)){
+                //    clear()
+                
+                noFill()
+                stroke(255)
+                rect(350,60,435,265)
+                stroke(0)
+                fill(255)
+
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text("Chemistry", 350+340+20, 200+20);
+                        text("Economics", 350+340+20, 200+30+3);
+                        text("Literature", 350+340+20, 200+40+6);
+                        text("Medicine", 350+340+20, 200+50+9);
+                        text("Peace", 350+340+20, 200+60+12);
+                        text("Physics", 350+340+20, 200+70+15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                        textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[9].chemistry, 300+300+15+15+17+10+7-28, 200-14+14+84-16-44+90-10-24);
+                        text(noblepr.country[9].economics, 300+300-5+30+20+8-200+2+70, 200-14+14+110+5-2-24-15+4+40);
+                        //text(noblepr.country[9].literature, 300+300-130+7+45+30-120+55, 200-14+14+85+10+10-12+10+15+3-100+85);
+                        text(noblepr.country[9].medicine, 300+300-160+14-25+40-15, 200-14+14+85-75-35-65+5+165);
+                        text(noblepr.country[9].peace, 300+300-107+30-30+20+10+5+70-10+6-163, 200-14+14+85-198+10-20+15+5-1+130);
+                        text(noblepr.country[9].physics, 300+300-100+130+10+14-25+20-100, 200-14+14+85-180+5+45-40+30-60);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                
+                fill(73,87,98)
+                rect(350+340,200+10,10,10)
+                fill(0)
+                fill(144,202,249)
+                rect(350+340,200+20+3,10,10)
+                fill(0)
+                fill(100,181,246)
+                rect(350+340,200+30+6,10,10)
+                fill(0)
+                fill(66,165,245)
+                rect(350+340,200+40+9,10,10)
+                fill(0)
+                fill(33,150,243)
+                rect(350+340,200+50+12,10,10)
+                fill(0)
+                fill(25,118,210)
+                rect(350+340,200+60+15,10,10)
+                fill(0)
+
+
+
+                var sum = noblepr.country[9].chemistry + noblepr.country[9].economics + noblepr.country[9].literature+ noblepr.country[9].medicine+ noblepr.country[9].peace+ noblepr.country[9].physics
+                chem = (noblepr.country[9].chemistry/sum) * 100
+                eco = (noblepr.country[9].economics/sum) * 100
+                lit = (noblepr.country[9].literature/sum) * 100
+                med = (noblepr.country[9].medicine/sum) * 100
+                peace = (noblepr.country[9].peace/sum) * 100
+                phy = (noblepr.country[9].physics/sum) * 100
+                
+                chem_map = map(chem, 0, 100, 0, 360);
+                eco_map = map(eco, 0, 100, 0, 360);
+                lit_map = map(lit, 0, 100, 0, 360);
+                med_map = map(med, 0, 100, 0, 360);
+                peace_map = map(peace, 0, 100, 0, 360);
+                phy_map = map(phy, 0, 100, 0, 360);
+                
+                fill(73,87,98)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, 0, chem_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, 0,chem_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(144,202,249)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(100,181,246)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(66,165,245)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(33,150,243)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(25,118,210)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                //Pie Chart
+                //Cal
+                var sum = noblepr.country[9].male + noblepr.country[9].female
+                m = (noblepr.country[9].male/sum) * 100
+                f = (noblepr.country[9].female/sum) * 100
+                m_map = map(m, 0, 100, 0, 360);
+                f_map = map(f, 0, 100, 0, 360);
+                
+                
+                fill(91,155,213)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 140, 140, 0, m_map, PIE);
+                fill(237,125,49)
+                arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[9].male, 300+162+30, 200-14+14);
+                        text(noblepr.country[9].female, 300+321-20, 200-14+18-8);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+               
+                image(img, 300+162, 200-14 ,15,20);
+                image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[10], myy[10]) < (myrad[10]/2)){
+                //    clear()
+                
+                noFill()
+                stroke(255)
+                rect(350,60,435,265)
+                stroke(0)
+                fill(255)
+                
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text("Chemistry", 350+340+20, 200+20);
+                        text("Economics", 350+340+20, 200+30+3);
+                        text("Literature", 350+340+20, 200+40+6);
+                        text("Medicine", 350+340+20, 200+50+9);
+                        text("Peace", 350+340+20, 200+60+12);
+                        text("Physics", 350+340+20, 200+70+15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                        textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[10].chemistry, 300+300+15+15+17+10+7-28+12, 200-14+14+84-16-44+90-10-24-18);
+                        text(noblepr.country[10].economics, 300+300-5+30+20+8-200+2+70+45, 200-14+14+110+5-2-24-15+4+40);
+                        text(noblepr.country[10].literature, 300+300-130+7+45+30-120+55-10, 200-14+14+85+10+10-12+10+15+3-100+85-5);
+                        text(noblepr.country[10].medicine, 300+300-160+14-25+40-15-22, 200-14+14+85-75-35-65+5+165-64);
+                        text(noblepr.country[10].peace, 300+300-107+30-30+20+10+5+70-10+6-180+25, 200-14+14+85-198+10-20+15+5-1+60);
+                        text(noblepr.country[10].physics, 300+300-100+130+10+14-25+20-100+30, 200-14+14+85-180+5+45-40+30-55);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                
+                fill(73,87,98)
+                rect(350+340,200+10,10,10)
+                fill(0)
+                fill(144,202,249)
+                rect(350+340,200+20+3,10,10)
+                fill(0)
+                fill(100,181,246)
+                rect(350+340,200+30+6,10,10)
+                fill(0)
+                fill(66,165,245)
+                rect(350+340,200+40+9,10,10)
+                fill(0)
+                fill(33,150,243)
+                rect(350+340,200+50+12,10,10)
+                fill(0)
+                fill(25,118,210)
+                rect(350+340,200+60+15,10,10)
+                fill(0)
+
+
+
+                var sum = noblepr.country[10].chemistry + noblepr.country[10].economics + noblepr.country[10].literature+ noblepr.country[10].medicine+ noblepr.country[10].peace+ noblepr.country[10].physics
+                chem = (noblepr.country[10].chemistry/sum) * 100
+                eco = (noblepr.country[10].economics/sum) * 100
+                lit = (noblepr.country[10].literature/sum) * 100
+                med = (noblepr.country[10].medicine/sum) * 100
+                peace = (noblepr.country[10].peace/sum) * 100
+                phy = (noblepr.country[10].physics/sum) * 100
+                
+                chem_map = map(chem, 0, 100, 0, 360);
+                eco_map = map(eco, 0, 100, 0, 360);
+                lit_map = map(lit, 0, 100, 0, 360);
+                med_map = map(med, 0, 100, 0, 360);
+                peace_map = map(peace, 0, 100, 0, 360);
+                phy_map = map(phy, 0, 100, 0, 360);
+                
+                fill(73,87,98)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, 0, chem_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, 0,chem_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(144,202,249)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(100,181,246)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(66,165,245)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(33,150,243)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(25,118,210)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                //Pie Chart
+                //Cal
+                var sum = noblepr.country[10].male + noblepr.country[10].female
+                m = (noblepr.country[10].male/sum) * 100
+                f = (noblepr.country[10].female/sum) * 100
+                m_map = map(m, 0, 100, 0, 360);
+                f_map = map(f, 0, 100, 0, 360);
+                
+                
+                fill(91,155,213)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 140, 140, 0, m_map, PIE);
+                fill(237,125,49)
+                arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[10].male, 300+162+30, 200-14+14);
+                        text(noblepr.country[10].female, 300+321-20, 200-14+18-8);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+               
+                image(img, 300+162, 200-14 ,15,20);
+                image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[11], myy[11]) < (myrad[11]/2)){
+                //    clear()
+                
+                noFill()
+                stroke(255)
+                rect(350,60,435,265)
+                stroke(0)
+                fill(255)
+
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text("Chemistry", 350+340+20, 200+20);
+                        text("Economics", 350+340+20, 200+30+3);
+                        text("Literature", 350+340+20, 200+40+6);
+                        text("Medicine", 350+340+20, 200+50+9);
+                        text("Peace", 350+340+20, 200+60+12);
+                        text("Physics", 350+340+20, 200+70+15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                        textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[11].chemistry, 300+300+15+15+17+10+7-28+12-15, 200-14+14+84-16-44+90-10-24-18+25);
+                        //text(noblepr.country[11].economics, 300+300-5+30+20+8-200+2+70+45-29, 200-14+14+110+5-2-24-15+4+40+2);
+                        text(noblepr.country[11].literature, 300+300-130+7+45+30-120+55+25, 200-14+14+85+10+10-12+10+15+3-100+96);
+                        text(noblepr.country[11].medicine, 300+300-160+14-25+40-15-5, 200-14+14+85-75-35-65+5+165-64+55);
+                        text(noblepr.country[11].peace, 300+300-107+30-30+20+10+5+70-10+6-180+18, 200-14+14+85-198+10-20+15+5-1+108);
+                        text(noblepr.country[11].physics, 300+300-100+130+10+14-25+20-100, 200-14+14+85-180+5+45-40+30-60);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                
+                fill(73,87,98)
+                rect(350+340,200+10,10,10)
+                fill(0)
+                fill(144,202,249)
+                rect(350+340,200+20+3,10,10)
+                fill(0)
+                fill(100,181,246)
+                rect(350+340,200+30+6,10,10)
+                fill(0)
+                fill(66,165,245)
+                rect(350+340,200+40+9,10,10)
+                fill(0)
+                fill(33,150,243)
+                rect(350+340,200+50+12,10,10)
+                fill(0)
+                fill(25,118,210)
+                rect(350+340,200+60+15,10,10)
+                fill(0)
+
+
+
+                var sum = noblepr.country[11].chemistry + noblepr.country[11].economics + noblepr.country[11].literature+ noblepr.country[11].medicine+ noblepr.country[11].peace+ noblepr.country[11].physics
+                chem = (noblepr.country[11].chemistry/sum) * 100
+                eco = (noblepr.country[11].economics/sum) * 100
+                lit = (noblepr.country[11].literature/sum) * 100
+                med = (noblepr.country[11].medicine/sum) * 100
+                peace = (noblepr.country[11].peace/sum) * 100
+                phy = (noblepr.country[11].physics/sum) * 100
+                
+                chem_map = map(chem, 0, 100, 0, 360);
+                eco_map = map(eco, 0, 100, 0, 360);
+                lit_map = map(lit, 0, 100, 0, 360);
+                med_map = map(med, 0, 100, 0, 360);
+                peace_map = map(peace, 0, 100, 0, 360);
+                phy_map = map(phy, 0, 100, 0, 360);
+                
+                fill(73,87,98)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, 0, chem_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, 0,chem_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(144,202,249)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(100,181,246)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(66,165,245)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(33,150,243)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(25,118,210)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                //Pie Chart
+                //Cal
+                var sum = noblepr.country[11].male + noblepr.country[11].female
+                m = (noblepr.country[11].male/sum) * 100
+                f = (noblepr.country[11].female/sum) * 100
+                m_map = map(m, 0, 100, 0, 360);
+                f_map = map(f, 0, 100, 0, 360);
+                
+                
+                fill(91,155,213)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 140, 140, 0, m_map, PIE);
+                fill(237,125,49)
+                arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[11].male, 300+162+30, 200-14+14);
+                        text(noblepr.country[11].female, 300+321-20, 200-14+18-8);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+               
+                image(img, 300+162, 200-14 ,15,20);
+                image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[12], myy[12]) < (myrad[12]/2)){
+                //    clear()
+                
+                noFill()
+                stroke(255)
+                rect(350,60,435,265)
+                stroke(0)
+                fill(255)
+
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text("Chemistry", 350+340+20, 200+20);
+                        text("Economics", 350+340+20, 200+30+3);
+                        text("Literature", 350+340+20, 200+40+6);
+                        text("Medicine", 350+340+20, 200+50+9);
+                        text("Peace", 350+340+20, 200+60+12);
+                        text("Physics", 350+340+20, 200+70+15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                        textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[12].chemistry, 300+300+15+15+17+10+7-28+15+10, 200-14+14+84-16-44+90-10-24-18-28);
+                        //text(noblepr.country[12].economics, 300+300-5+30+20+8-200+2+70+45-29+120-10, 200-14+14+110+5-2-24-15+4+40+2-62);
+                        text(noblepr.country[12].literature, 300+300-130+7+45+30-120+55+25+100+10, 200-14+14+85+10+10-12+10+15+3-100+96-20);
+                        text(noblepr.country[12].medicine, 300+300-160+14-25+40-15-5+55, 200-14+14+85-75-35-65+5+165-64+55+43);
+                        text(noblepr.country[12].peace, 300+300-107+30-30+20+10+5+70-10+6-180+18, 200-14+14+85-198+10-20+15+5-1+138);
+                        text(noblepr.country[12].physics, 300+300-100+130+10+14-25+20-100+10, 200-14+14+85-180+5+45-40+30-60);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                
+                fill(73,87,98)
+                rect(350+340,200+10,10,10)
+                fill(0)
+                fill(144,202,249)
+                rect(350+340,200+20+3,10,10)
+                fill(0)
+                fill(100,181,246)
+                rect(350+340,200+30+6,10,10)
+                fill(0)
+                fill(66,165,245)
+                rect(350+340,200+40+9,10,10)
+                fill(0)
+                fill(33,150,243)
+                rect(350+340,200+50+12,10,10)
+                fill(0)
+                fill(25,118,210)
+                rect(350+340,200+60+15,10,10)
+                fill(0)
+
+
+
+                var sum = noblepr.country[12].chemistry + noblepr.country[12].economics + noblepr.country[12].literature+ noblepr.country[12].medicine+ noblepr.country[12].peace+ noblepr.country[12].physics
+                chem = (noblepr.country[12].chemistry/sum) * 100
+                eco = (noblepr.country[12].economics/sum) * 100
+                lit = (noblepr.country[12].literature/sum) * 100
+                med = (noblepr.country[12].medicine/sum) * 100
+                peace = (noblepr.country[12].peace/sum) * 100
+                phy = (noblepr.country[12].physics/sum) * 100
+                
+                chem_map = map(chem, 0, 100, 0, 360);
+                eco_map = map(eco, 0, 100, 0, 360);
+                lit_map = map(lit, 0, 100, 0, 360);
+                med_map = map(med, 0, 100, 0, 360);
+                peace_map = map(peace, 0, 100, 0, 360);
+                phy_map = map(phy, 0, 100, 0, 360);
+                
+                fill(73,87,98)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, 0, chem_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, 0,chem_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                // fill(144,202,249)
+                // strokeWeight(1)
+                // stroke(0)
+                // arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                // fill(0)
+                // arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                // stroke(0)
+                // fill(255)
+                // strokeWeight(1)
+               
+                fill(100,181,246)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(66,165,245)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(33,150,243)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(25,118,210)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                //Pie Chart
+                //Cal
+                var sum = noblepr.country[12].male + noblepr.country[12].female
+                m = (noblepr.country[12].male/sum) * 100
+                f = (noblepr.country[12].female/sum) * 100
+                m_map = map(m, 0, 100, 0, 360);
+                f_map = map(f, 0, 100, 0, 360);
+                
+                
+                fill(91,155,213)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 140, 140, 0, m_map, PIE);
+                fill(237,125,49)
+                arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[12].male, 300+162+30, 200-14+14);
+                        text(noblepr.country[12].female, 300+321-20, 200-14+18-8);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+               
+                image(img, 300+162, 200-14 ,15,20);
+                image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[13], myy[13]) < (myrad[13]/2)){
+                //    clear()
+                
+                noFill()
+                stroke(255)
+                rect(350,60,435,265)
+                stroke(0)
+                fill(255)
+                
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text("Chemistry", 350+340+20, 200+20);
+                        text("Economics", 350+340+20, 200+30+3);
+                        text("Literature", 350+340+20, 200+40+6);
+                        text("Medicine", 350+340+20, 200+50+9);
+                        text("Peace", 350+340+20, 200+60+12);
+                        text("Physics", 350+340+20, 200+70+15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                        textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[13].chemistry, 300+300+15+15+17+10+7-28+18, 200-14+14+84-16-44+90-10-24-18-28+18);
+                        text(noblepr.country[13].economics, 300+300-5+30+20+8-200+2+70+45-29+120-65, 200-14+14+110+5-2-24-15+4+40+2-62+54);
+                        text(noblepr.country[13].literature, 300+300-130+7+45+30-120+55+25+100+10-150+25, 200-14+14+85+10+10-12+10+15+3-100+96-5);
+                        text(noblepr.country[13].medicine, 300+300-160+14-25+40-15-5+55-50-20-5, 200-14+14+85-75-35-65+5+165-64+55+43-100-5);
+                        text(noblepr.country[13].peace, 300+300-107+30-30+20+10+5+70-10+6-180+18+100+15, 200-14+14+85-198+10-20+15+5-1+138-120-30);
+                        text(noblepr.country[13].physics, 300+300-100+130+10+14-25+20-100+10+100-4, 200-14+14+85-180+5+45-40+30-60+70);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                
+                fill(73,87,98)
+                rect(350+340,200+10,10,10)
+                fill(0)
+                fill(144,202,249)
+                rect(350+340,200+20+3,10,10)
+                fill(0)
+                fill(100,181,246)
+                rect(350+340,200+30+6,10,10)
+                fill(0)
+                fill(66,165,245)
+                rect(350+340,200+40+9,10,10)
+                fill(0)
+                fill(33,150,243)
+                rect(350+340,200+50+12,10,10)
+                fill(0)
+                fill(25,118,210)
+                rect(350+340,200+60+15,10,10)
+                fill(0)
+
+
+
+                var sum = noblepr.country[13].chemistry + noblepr.country[13].economics + noblepr.country[13].literature+ noblepr.country[13].medicine+ noblepr.country[13].peace+ noblepr.country[13].physics
+                chem = (noblepr.country[13].chemistry/sum) * 100
+                eco = (noblepr.country[13].economics/sum) * 100
+                lit = (noblepr.country[13].literature/sum) * 100
+                med = (noblepr.country[13].medicine/sum) * 100
+                peace = (noblepr.country[13].peace/sum) * 100
+                phy = (noblepr.country[13].physics/sum) * 100
+                
+                chem_map = map(chem, 0, 100, 0, 360);
+                eco_map = map(eco, 0, 100, 0, 360);
+                lit_map = map(lit, 0, 100, 0, 360);
+                med_map = map(med, 0, 100, 0, 360);
+                peace_map = map(peace, 0, 100, 0, 360);
+                phy_map = map(phy, 0, 100, 0, 360);
+                
+                fill(73,87,98)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, 0, chem_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, 0,chem_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(144,202,249)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(100,181,246)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(66,165,245)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(33,150,243)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(25,118,210)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                //Pie Chart
+                //Cal
+                var sum = noblepr.country[13].male + noblepr.country[13].female
+                m = (noblepr.country[13].male/sum) * 100
+                f = (noblepr.country[13].female/sum) * 100
+                m_map = map(m, 0, 100, 0, 360);
+                f_map = map(f, 0, 100, 0, 360);
+                
+                
+                fill(91,155,213)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 140, 140, 0, m_map, PIE);
+                fill(237,125,49)
+                arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[13].male, 300+162+30, 200-14+14);
+                        text(noblepr.country[13].female, 300+321-20, 200-14+18-8);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+               
+                image(img, 300+162, 200-14 ,15,20);
+                image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[14], myy[14]) < (myrad[14]/2)){
+                //    clear()
+                
+                noFill()
+                stroke(255)
+                rect(350,60,435,265)
+                stroke(0)
+                fill(255)
+
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text("Chemistry", 350+340+20, 200+20);
+                        text("Economics", 350+340+20, 200+30+3);
+                        text("Literature", 350+340+20, 200+40+6);
+                        text("Medicine", 350+340+20, 200+50+9);
+                        text("Peace", 350+340+20, 200+60+12);
+                        text("Physics", 350+340+20, 200+70+15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                        textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[14].chemistry, 300+300+15+15+17+10+7-28+18+5, 200-14+14+84-16-44+90-10-24-18-28+18-12);
+                        text(noblepr.country[14].medicine, 300+300-160+14-25+40-15-5+55-50-20-5, 200-14+14+85-75-35-65+5+165-64+55+43-100-5+20);
+                        text(noblepr.country[14].physics, 300+300-100+130+10+14-25+20-100+10+100-4-8, 200-14+14+85-180+5+45-40+30-60+70-15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+                
+                fill(73,87,98)
+                rect(350+340,200+10,10,10)
+                fill(0)
+                fill(144,202,249)
+                rect(350+340,200+20+3,10,10)
+                fill(0)
+                fill(100,181,246)
+                rect(350+340,200+30+6,10,10)
+                fill(0)
+                fill(66,165,245)
+                rect(350+340,200+40+9,10,10)
+                fill(0)
+                fill(33,150,243)
+                rect(350+340,200+50+12,10,10)
+                fill(0)
+                fill(25,118,210)
+                rect(350+340,200+60+15,10,10)
+                fill(0)
+
+                var sum = noblepr.country[14].chemistry + noblepr.country[14].economics + noblepr.country[14].literature+ noblepr.country[14].medicine+ noblepr.country[14].peace+ noblepr.country[14].physics
+                chem = (noblepr.country[14].chemistry/sum) * 100
+                eco = (noblepr.country[14].economics/sum) * 100
+                lit = (noblepr.country[14].literature/sum) * 100
+                med = (noblepr.country[14].medicine/sum) * 100
+                peace = (noblepr.country[14].peace/sum) * 100
+                phy = (noblepr.country[14].physics/sum) * 100
+                
+                chem_map = map(chem, 0, 100, 0, 360);
+                eco_map = map(eco, 0, 100, 0, 360);
+                lit_map = map(lit, 0, 100, 0, 360);
+                med_map = map(med, 0, 100, 0, 360);
+                peace_map = map(peace, 0, 100, 0, 360);
+                phy_map = map(phy, 0, 100, 0, 360);
+                
+                fill(73,87,98)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, 0, chem_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, 0,chem_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+                
+                fill(66,165,245)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(25,118,210)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                //Pie Chart
+                //Cal
+                var sum = noblepr.country[14].male + noblepr.country[14].female
+                m = (noblepr.country[14].male/sum) * 100
+                f = (noblepr.country[14].female/sum) * 100
+                m_map = map(m, 0, 100, 0, 360);
+                f_map = map(f, 0, 100, 0, 360);
+                
+                
+                fill(91,155,213)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 140, 140, 0, m_map, PIE);
+                fill(237,125,49)
+                arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[14].male, 300+162+30, 200-14+14);
+                        text(noblepr.country[14].female, 300+321-20, 200-14+18-8);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+               
+                image(img, 300+162, 200-14 ,15,20);
+                image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[15], myy[15]) < (myrad[15]/2)){
+                //    clear()
+                
+                noFill()
+                stroke(255)
+                rect(350,60,435,265)
+                stroke(0)
+                fill(255)
+
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text("Chemistry", 350+340+20, 200+20);
+                        text("Economics", 350+340+20, 200+30+3);
+                        text("Literature", 350+340+20, 200+40+6);
+                        text("Medicine", 350+340+20, 200+50+9);
+                        text("Peace", 350+340+20, 200+60+12);
+                        text("Physics", 350+340+20, 200+70+15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                        textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[15].chemistry, 300+300+15+15+17+10+7-28+18+5-70-5, 200-14+14+84-16-44+90-10-24-18-28+18-12+74+2);
+                        text(noblepr.country[15].economics, 300+300-5+30+20+8-200+2+70+45-29+120-65-150-15, 200-14+14+110+5-2-24-15+4+40+2-62+54-105);
+                        text(noblepr.country[15].literature, 300+300-130+7+45+30-120+55+25+100+10-150+25+10, 200-14+14+85+10+10-12+10+15+3-100+96-5-220);
+                        text(noblepr.country[15].medicine, 300+300-160+14-25+40-15-5+55-50-20-5+220-2, 200-14+14+85-75-35-65+5+165-64+55+43-100-5+20-90);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+                
+                fill(73,87,98)
+                rect(350+340,200+10,10,10)
+                fill(0)
+                fill(144,202,249)
+                rect(350+340,200+20+3,10,10)
+                fill(0)
+                fill(100,181,246)
+                rect(350+340,200+30+6,10,10)
+                fill(0)
+                fill(66,165,245)
+                rect(350+340,200+40+9,10,10)
+                fill(0)
+                fill(33,150,243)
+                rect(350+340,200+50+12,10,10)
+                fill(0)
+                fill(25,118,210)
+                rect(350+340,200+60+15,10,10)
+                fill(0)
+
+
+
+                var sum = noblepr.country[15].chemistry + noblepr.country[15].economics + noblepr.country[15].literature+ noblepr.country[15].medicine+ noblepr.country[15].peace+ noblepr.country[15].physics
+                chem = (noblepr.country[15].chemistry/sum) * 100
+                eco = (noblepr.country[15].economics/sum) * 100
+                lit = (noblepr.country[15].literature/sum) * 100
+                med = (noblepr.country[15].medicine/sum) * 100
+                peace = (noblepr.country[15].peace/sum) * 100
+                phy = (noblepr.country[15].physics/sum) * 100
+                
+                chem_map = map(chem, 0, 100, 0, 360);
+                eco_map = map(eco, 0, 100, 0, 360);
+                lit_map = map(lit, 0, 100, 0, 360);
+                med_map = map(med, 0, 100, 0, 360);
+                peace_map = map(peace, 0, 100, 0, 360);
+                phy_map = map(phy, 0, 100, 0, 360);
+                
+                fill(73,87,98)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, 0, chem_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, 0,chem_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(144,202,249)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(100,181,246)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(66,165,245)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                //Pie Chart
+                //Cal
+                var sum = noblepr.country[15].male + noblepr.country[15].female
+                m = (noblepr.country[15].male/sum) * 100
+                f = (noblepr.country[15].female/sum) * 100
+                m_map = map(m, 0, 100, 0, 360);
+                f_map = map(f, 0, 100, 0, 360);
+                
+                
+                fill(91,155,213)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 140, 140, 0, m_map, PIE);
+                fill(237,125,49)
+                arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[15].male, 300+162+30, 200-14+14);
+                        text(noblepr.country[15].female, 300+321-20, 200-14+18-8);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+               
+                image(img, 300+162, 200-14 ,15,20);
+                image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[16], myy[16]) < (myrad[16]/2)){
+                //    clear()
+                
+                noFill()
+                stroke(255)
+                rect(350,60,435,265)
+                stroke(0)
+                fill(255)
+
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text("Chemistry", 350+340+20, 200+20);
+                        text("Economics", 350+340+20, 200+30+3);
+                        text("Literature", 350+340+20, 200+40+6);
+                        text("Medicine", 350+340+20, 200+50+9);
+                        text("Peace", 350+340+20, 200+60+12);
+                        text("Physics", 350+340+20, 200+70+15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                        textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[16].chemistry, 300+300+15+15+17+10+7-28+18+3, 200-14+14+84-16-44+90-10-24-18-28+18-12+7);
+                        //text(noblepr.country[16].economics, 300+300-5+30+20+8-200+2+70+45-29+120-65, 200-14+14+110+5-2-24-15+4+40+2-62+54);
+                        text(noblepr.country[16].literature, 300+300-130+7+45+30-120+55+25+100+10-150+25+70+5, 200-14+14+85+10+10-12+10+15+3-100+96+2);
+                        text(noblepr.country[16].medicine, 300+300-160+14-25+40-15-5+55-50-20-5, 200-14+14+85-75-35-65+5+165-64+55+43-100-5+20-25);
+                        text(noblepr.country[16].peace, 300+300-107+30-30+20+10+5+70-10+6-180+18+100+15+65, 200-14+14+85-198+10-20+15+5-1+138-120-10);
+                        //text(noblepr.country[16].physics, 300+300-100+130+10+14-25+20-100+10+100-4-8, 200-14+14+85-180+5+45-40+30-60+70-15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                
+                fill(73,87,98)
+                rect(350+340,200+10,10,10)
+                fill(0)
+                fill(144,202,249)
+                rect(350+340,200+20+3,10,10)
+                fill(0)
+                fill(100,181,246)
+                rect(350+340,200+30+6,10,10)
+                fill(0)
+                fill(66,165,245)
+                rect(350+340,200+40+9,10,10)
+                fill(0)
+                fill(33,150,243)
+                rect(350+340,200+50+12,10,10)
+                fill(0)
+                fill(25,118,210)
+                rect(350+340,200+60+15,10,10)
+                fill(0)
+
+
+
+                var sum = noblepr.country[16].chemistry + noblepr.country[16].economics + noblepr.country[16].literature+ noblepr.country[16].medicine+ noblepr.country[16].peace+ noblepr.country[16].physics
+                chem = (noblepr.country[16].chemistry/sum) * 100
+                eco = (noblepr.country[16].economics/sum) * 100
+                lit = (noblepr.country[16].literature/sum) * 100
+                med = (noblepr.country[16].medicine/sum) * 100
+                peace = (noblepr.country[16].peace/sum) * 100
+                phy = (noblepr.country[16].physics/sum) * 100
+                
+                chem_map = map(chem, 0, 100, 0, 360);
+                eco_map = map(eco, 0, 100, 0, 360);
+                lit_map = map(lit, 0, 100, 0, 360);
+                med_map = map(med, 0, 100, 0, 360);
+                peace_map = map(peace, 0, 100, 0, 360);
+                phy_map = map(phy, 0, 100, 0, 360);
+            
+                fill(73,87,98)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, 0, chem_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, 0,chem_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                // fill(144,202,249)
+                // strokeWeight(1)
+                // stroke(0)
+                // arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                // fill(0)
+                // arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                // stroke(0)
+                // fill(255)
+                // strokeWeight(1)
+               
+                fill(100,181,246)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(66,165,245)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(33,150,243)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                // fill(25,118,210)
+                // strokeWeight(1)
+                // stroke(0)
+                // arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                // fill(0)
+                // arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                // stroke(0)
+                // fill(255)
+                // strokeWeight(1)
+               
+                //Pie Chart
+                //Cal
+                var sum = noblepr.country[16].male + noblepr.country[16].female
+                m = (noblepr.country[16].male/sum) * 100
+                f = (noblepr.country[16].female/sum) * 100
+                m_map = map(m, 0, 100, 0, 360);
+                f_map = map(f, 0, 100, 0, 360);
+                
+                
+                fill(91,155,213)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 140, 140, 0, m_map, PIE);
+                fill(237,125,49)
+                arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[16].male, 300+162+30, 200-14+14);
+                        text(noblepr.country[16].female, 300+321-20, 200-14+18-8);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+               
+                image(img, 300+162, 200-14 ,15,20);
+                image(female_img, 300+321, 200-14 ,15,23);
+                
+                }
+                else if(dist(mouseX, mouseY, myx[17], myy[17]) < (myrad[17]/2)){
+                //    clear()
+                
+                noFill()
+                stroke(255)
+                rect(350,60,435,265)
+                stroke(0)
+                fill(255)
+
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text("Chemistry", 350+340+20, 200+20);
+                        text("Economics", 350+340+20, 200+30+3);
+                        text("Literature", 350+340+20, 200+40+6);
+                        text("Medicine", 350+340+20, 200+50+9);
+                        text("Peace", 350+340+20, 200+60+12);
+                        text("Physics", 350+340+20, 200+70+15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                        textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[17].chemistry, 300+300+15+15+17+10+7-28+18+3-43, 200-14+14+84-16-44+90-10-24-18-28+18-12+7+55);
+                        //text(noblepr.country[17].economics, 300+300-5+30+20+8-200+2+70+45-29+120-65, 200-14+14+110+5-2-24-15+4+40+2-62+54);
+                        text(noblepr.country[17].literature, 300+300-130+7+45+30-120+55+25+100+10-150+25+70+5-125, 200-14+14+85+10+10-12+10+15+3-100+96+2-55);
+                        //text(noblepr.country[17].medicine, 300+300-160+14-25+40-15-5+55-50-20-5, 200-14+14+85-75-35-65+5+165-64+55+43-100-5+20-25);
+                        text(noblepr.country[17].peace, 300+300-107+30-30+20+10+5+70-10+6-180+18+100+15+65-55, 200-14+14+85-198+10-20+15+5-1+138-120-10-19);
+                        //text(noblepr.country[17].physics, 300+300-100+130+10+14-25+20-100+10+100-4-8, 200-14+14+85-180+5+45-40+30-60+70-15);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+
+                
+                fill(73,87,98)
+                rect(350+340,200+10,10,10)
+                fill(0)
+                fill(144,202,249)
+                rect(350+340,200+20+3,10,10)
+                fill(0)
+                fill(100,181,246)
+                rect(350+340,200+30+6,10,10)
+                fill(0)
+                fill(66,165,245)
+                rect(350+340,200+40+9,10,10)
+                fill(0)
+                fill(33,150,243)
+                rect(350+340,200+50+12,10,10)
+                fill(0)
+                fill(25,118,210)
+                rect(350+340,200+60+15,10,10)
+                fill(0)
+
+
+
+                var sum = noblepr.country[17].chemistry + noblepr.country[17].economics + noblepr.country[17].literature+ noblepr.country[17].medicine+ noblepr.country[17].peace+ noblepr.country[17].physics
+                chem = (noblepr.country[17].chemistry/sum) * 100
+                eco = (noblepr.country[17].economics/sum) * 100
+                lit = (noblepr.country[17].literature/sum) * 100
+                med = (noblepr.country[17].medicine/sum) * 100
+                peace = (noblepr.country[17].peace/sum) * 100
+                phy = (noblepr.country[17].physics/sum) * 100
+                
+                chem_map = map(chem, 0, 100, 0, 360);
+                eco_map = map(eco, 0, 100, 0, 360);
+                lit_map = map(lit, 0, 100, 0, 360);
+                med_map = map(med, 0, 100, 0, 360);
+                peace_map = map(peace, 0, 100, 0, 360);
+                phy_map = map(phy, 0, 100, 0, 360);
+                
+                fill(73,87,98)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, 0, chem_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, 0,chem_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(144,202,249)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map, chem_map+eco_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map,chem_map+eco_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(100,181,246)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map, chem_map+eco_map+lit_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map,chem_map+eco_map+lit_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(66,165,245)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map, chem_map+eco_map+lit_map+med_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map,chem_map+eco_map+lit_map+med_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(33,150,243)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map, chem_map+eco_map+lit_map+med_map+peace_map, PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map,chem_map+eco_map+lit_map+med_map+peace_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                fill(25,118,210)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 220, 220, chem_map+eco_map+lit_map+med_map+peace_map, chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                fill(0)
+                arc(550, 200, 180, 180, chem_map+eco_map+lit_map+med_map+peace_map,chem_map+eco_map+lit_map+med_map+peace_map+phy_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                //Pie Chart
+                //Cal
+                var sum = noblepr.country[17].male + noblepr.country[17].female
+                m = (noblepr.country[17].male/sum) * 100
+                f = (noblepr.country[17].female/sum) * 100
+                m_map = map(m, 0, 100, 0, 360);
+                f_map = map(f, 0, 100, 0, 360);
+                
+                
+                fill(91,155,213)
+                strokeWeight(1)
+                stroke(0)
+                arc(550, 200, 140, 140, 0, m_map, PIE);
+                fill(237,125,49)
+                arc(550, 200, 140, 140, m_map+1,f_map , PIE);
+                stroke(0)
+                fill(255)
+                strokeWeight(1)
+               
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text(noblepr.country[17].male, 300+162+30, 200-14+14);
+                        text(noblepr.country[17].female, 300+321-20, 200-14+18-8);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+               
+                image(img, 300+162, 200-14 ,15,20);
+                image(female_img, 300+321, 200-14 ,15,23);
+                
+                }    
+                else{
+                //    clear()
+                noStroke();
+                fill(0)
+                rect(350,60,402,267)//,490,290
+                stroke(0)
+                fill(255)
+                }
+                
+                //Label x axis
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(20);
+                        text("Countries", 600+50, 550);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+                
+                //Label y axis
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(20);
+                        push()
+                        translate(40,350)
+                        rotate(-90)
+                        text("No of Noble Awards", 0, 0);
+                        translate(0,0)
+                        pop()
+
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+                
+                //Legend for size
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text("Size of Bubble", 1180+50, 60+15);
+                        text("10", 1180+50+30+30-5, 60+15+25);
+                        text("50", 1180+50+30+30-5, 60+15+50);
+                        text("100", 1180+50+30+30-5, 60+15+95);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+                        
+                leg_r = [20,50,100]
+                noFill()
+                stroke(255)
+                rect(1180+20,60,145,140)
+                        leg_r_map = map(leg_r[0], 0, 200, 0, 100);
+                        ellipse(1180+25+8+30-5, 60+15+25-5, leg_r_map)
+                        
+                        leg_r_map = map(leg_r[1], 0, 200, 0, 100);
+                        ellipse(1180+25+8+30-5, 60+15+50-5, leg_r_map)
+                        
+                        leg_r_map = map(leg_r[2], 0, 200, 0, 100);
+                        ellipse(1180+25+8+30-5, 60+15+95-5, leg_r_map)
+                        
+                        
+                stroke(0)
+                fill(255)
+
+                textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(12);
+                        text("Color of Bubble", 1180+50, 215+15+2);
+                        text("America", 1180+50+30+30-25, 215+15+25);
+                        text("Europe", 1180+50+30+30-25, 215+15+25+18);
+                        text("Asia", 1180+50+30+30-25, 215+15+25+34);
+                        text("Oceania", 1180+50+30+30-25, 215+15+25+52);
+                        text("Africa", 1180+50+30+30-25, 215+15+25+70);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+                
+                
+                //Legend for color
+                noFill()
+                stroke(255)
+                rect(1180+20,215,145,135)
+                
+                fill(225,87,89)   
+                noStroke()
+                ellipse(1180+25+8+30-5-10, 215+15+25, 15)
+                stroke(0)
+                fill(255)
+                
+                fill(118,183,178)
+                noStroke()
+                ellipse(1180+25+8+30-5-10, 215+15+25+18, 15)
+                stroke(0)
+                fill(255)
+                
+                fill(242,142,43)
+                noStroke()
+                ellipse(1180+25+8+30-5-10, 215+15+25+34, 15)
+                stroke(0)
+                fill(255)
+                
+                fill(78,121,167)
+                noStroke()
+                ellipse(1180+25+8+30-5-10, 215+15+25+52, 15)
+                stroke(0)
+                fill(255)
+                
+                fill(176,122,161)
+                noStroke()
+                ellipse(1180+25+8+30-5-10, 215+15+25+70, 15)
+                stroke(0)
+                fill(255)
+                
+                textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+                
+                stroke(0)
+                fill(255)
+            }
+
+
+
+
+
+
+            function mousePressed() {
+                if(dist(mouseX, mouseY, myx[t], myy[t]) < myrad[t]){
+                    
+                }
+            }
+            function mouseReleased() {
+                if(dist(mouseX, mouseY, myx[t], myy[t]) < myrad[t]){
+                    
+                }
+            }
+
+            class ContinentSeg{ 
+                constructor(tempstartx){
+                    //drawline parameters
+                    this.startx = tempstartx;
+            }
+            
+                drawdashedline(){
+                    strokeWeight(0.5);
+                    stroke (124,131,135);
+                    var i;
+                    for(i=0;i<=495;i=i+20){
+                        line(this.startx, i, this.startx, i+10)    
+                    }
+                    strokeWeight(1);
+                    stroke (0);
+                }
+
+                
+
+            }
+            
+            
+            class Axis{ 
+                constructor(tempstartx, tempstarty,tempendx,tempendy){
+                    //drawline parameters
+                    this.startx = tempstartx;
+                    this.starty = tempstarty;
+                    this.endx = tempendx;
+                    this.endy = tempendy;
+                    
+                    
+            }
+            
+                drawline(){
+                    stroke(255)
+                    strokeWeight(3);
+                    line(this.startx, this.starty, this.endx, this.endy)
+                    strokeWeight(1);
+                    stroke(0)
+                }
+
+                
+
+            }
+
+            class Axisarrow{ 
+                 constructor(temp_x1,temp_y1, temp_x2, temp_y2, temp_x3, temp_y3){
+                    //drawline parameters
+                    this.vx1 = temp_x1;
+                    this.vy1 = temp_y1;
+                    this.vx2 = temp_x2;
+                    this.vy2 = temp_y2;
+                    this.vx3 = temp_x3;
+                    this.vy3 = temp_y3;
+                    
+            }
+                axisarrows(){
+                    strokeJoin(ROUND);
+                    strokeWeight(3);
+                    stroke(255)
+                    noFill();
+                    beginShape();
+                    vertex(this.vx1, this.vy1);
+                    vertex(this.vx2, this.vy2);
+                    vertex(this.vx3, this.vy3);
+                    endShape();
+                    fill(255,255,255);
+                    stroke(0)   
+                    strokeWeight(1);
+                    strokeJoin(MITER);
+                }
+            }
+
+            class Axisticks{ 
+                 constructor(temp_start,temp_add, temp_min, temp_max, temp_is_xaxis){
+                    //drawline parameters
+                    this.start = temp_start;
+                    this.add = temp_add;
+                    this.min = temp_min;
+                    this.max = temp_max;
+                    this.isx = temp_is_xaxis
+                    
+            }
+                ticks(){ 
+                    if(this.isx)
+                    {
+                        for (let it = this.start + this.add; it < width-10; it = it+this.add) {
+                            strokeWeight(2);
+                            stroke(255)
+                            line(it, this.min,it, this.max );
+                            strokeWeight(1);
+                            stroke(0) 
+                        }
+                        textFont('Georgia');
+                        textStyle(ITALIC);
+                        smooth()
+                        textSize(15);
+                        text(noblepr.country[0].name, 90+50, 520);
+                        text(noblepr.country[1].name, 90+66+40, 520);
+                        text(noblepr.country[2].name, 90+66+66+55, 520);
+                        text(noblepr.country[3].name, 90+66+66+66+30, 520);
+                        text(noblepr.country[4].name, 90+66+66+66+66+45, 520);
+                        text(noblepr.country[5].name, 90+66+66+66+66+66+42, 520);
+                        text(noblepr.country[6].name, 90+66+66+66+66+66+66+42, 520);
+                        text(noblepr.country[7].name, 90+66+66+66+66+66+66+66+50, 520);
+                        text(noblepr.country[8].name, 90+66+66+66+66+66+66+66+66+37, 520);
+                        text(noblepr.country[9].name, 90+66+66+66+66+66+66+66+66+66+28, 520);
+                        text(noblepr.country[10].name, 90+66+66+66+66+66+66+66+66+66+66+55, 520);
+                        text(noblepr.country[11].name, 90+66+66+66+66+66+66+66+66+66+66+66+50, 520);
+                        text(noblepr.country[12].name, 90+66+66+66+66+66+66+66+66+66+66+66+66+50, 520);
+                        text(noblepr.country[13].name, 90+66+66+66+66+66+66+66+66+66+66+66+66+66+45, 520);
+                        text(noblepr.country[14].name, 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+25, 520);
+                        text(noblepr.country[15].name, 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+30, 520);
+                        text(noblepr.country[16].name, 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+57, 520);
+                        text(noblepr.country[17].name, 90+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+66+45, 520);
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');
+                    }
+                    else{
+                        for (let it = this.start + this.add; it > 0; it = it+this.add) {    
+                            strokeWeight(2);
+                            stroke(255)
+                            line(this.min,it, this.max, it );
+                            strokeWeight(1);
+                            stroke(0)
+                        }
+                        smooth()
+                        textStyle(ITALIC);
+                        textFont('Helvetica');        
+                        textSize(15);
+                        text("100", 56, 500-122);
+                        text("200", 56, 500-122-125);
+                        text("300", 56, 500-122-122-128);
+                        
+                        textStyle(NORMAL);
+                        noSmooth()
+                        textSize(12);
+                        textFont('Helvetica');        
+                        
+                    }
+                }
+            }
+            
+
+        </script>
+    <style>
+      body{
+        background-color: #00aaff;
+        text-align:center;
+      }
+      
+      h1{
+        background-color: #ffffff;
+        opacity: 0.8;
+      }
+      
+      p{
+        font-size: 18px;
+      }
+      
+      canvas{
+        border: thin solid red;
+      }
+    </style>
+	</head>
+	<body>
+    <h1 style="	font-family: Georgia; font-style: italic; font-size: 34px;">Major Noble Laureate Producers in the World</h1>
+    <div id="sketch-div"></div>
+    </body>
+</html>
