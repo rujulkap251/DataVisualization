@@ -1,0 +1,2518 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20191.19.0123.1906                               -->
+<workbook original-version='18.1' source-build='2019.1.0 (20191.19.0123.1906)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Nightingale Data 1854-55+ (nightingaledata - 2)' inline='true' name='federated.05p0hvn08gnzdk160ni5y1tob883' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='nightingaledata - 2' name='excel-direct.0tjksb91kesywz15f4euj1kyb38w'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Trinity/Data Visualisation/Assignment 2/nightingaledata - 2.xlsx' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='&quot;TRUE&quot;' />
+              <expression op='&quot;TRUE&quot;' />
+            </expression>
+          </clause>
+          <relation connection='excel-direct.0tjksb91kesywz15f4euj1kyb38w' name='Nightingale Data 1854-55' table='[&apos;Nightingale Data 1854-55$&apos;]' type='table'>
+            <columns gridOrigin='A1:D37:no:A1:D37:0' header='yes' outcome='2'>
+              <column datatype='string' name='Year' ordinal='0' />
+              <column datatype='string' name='Month' ordinal='1' />
+              <column datatype='string' name='Cause' ordinal='2' />
+              <column datatype='real' name='Value' ordinal='3' />
+            </columns>
+          </relation>
+          <relation connection='excel-direct.0tjksb91kesywz15f4euj1kyb38w' name='Nightingale Data_2 1854-55' table='[&apos;Nightingale Data_2 1854-55$&apos;]' type='table'>
+            <columns gridOrigin='A1:D37:no:A1:D37:0' header='yes' outcome='2'>
+              <column datatype='integer' name='Year' ordinal='0' />
+              <column datatype='string' name='Month' ordinal='1' />
+              <column datatype='string' name='Cause' ordinal='2' />
+              <column datatype='real' name='Value' ordinal='3' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[Cause (Nightingale Data!2 1854-55)]' value='[Nightingale Data_2 1854-55].[Cause]' />
+          <map key='[Cause]' value='[Nightingale Data 1854-55].[Cause]' />
+          <map key='[Month (Nightingale Data!2 1854-55)]' value='[Nightingale Data_2 1854-55].[Month]' />
+          <map key='[Month]' value='[Nightingale Data 1854-55].[Month]' />
+          <map key='[Value (Nightingale Data!2 1854-55)]' value='[Nightingale Data_2 1854-55].[Value]' />
+          <map key='[Value]' value='[Nightingale Data 1854-55].[Value]' />
+          <map key='[Year (Nightingale Data!2 1854-55)]' value='[Nightingale Data_2 1854-55].[Year]' />
+          <map key='[Year]' value='[Nightingale Data 1854-55].[Year]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Year]</local-name>
+            <parent-name>[Nightingale Data 1854-55]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Month</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Month]</local-name>
+            <parent-name>[Nightingale Data 1854-55]</parent-name>
+            <remote-alias>Month</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cause</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Cause]</local-name>
+            <parent-name>[Nightingale Data 1854-55]</parent-name>
+            <remote-alias>Cause</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Value</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Value]</local-name>
+            <parent-name>[Nightingale Data 1854-55]</parent-name>
+            <remote-alias>Value</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Nightingale Data 1854-55]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>1</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:D37:no:A1:D37:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>2</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Year (Nightingale Data!2 1854-55)]</local-name>
+            <parent-name>[Nightingale Data_2 1854-55]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Month</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Month (Nightingale Data!2 1854-55)]</local-name>
+            <parent-name>[Nightingale Data_2 1854-55]</parent-name>
+            <remote-alias>Month</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cause</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Cause (Nightingale Data!2 1854-55)]</local-name>
+            <parent-name>[Nightingale Data_2 1854-55]</parent-name>
+            <remote-alias>Cause</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Value</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Value (Nightingale Data!2 1854-55)]</local-name>
+            <parent-name>[Nightingale Data_2 1854-55]</parent-name>
+            <remote-alias>Value</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Nightingale Data_2 1854-55]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:D37:no:A1:D37:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>2</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column aggregation='Sum' caption='Order of Angle' datatype='integer' name='[Calculation_2293739616357695490]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='CASE [Month]&#13;&#10;&#13;&#10;&#13;&#10;WHEN &quot;Apr&quot; THEN 10&#13;&#10;WHEN &quot;Aug&quot; THEN 2&#13;&#10;WHEN &quot;Dec&quot; THEN 6&#13;&#10;WHEN &quot;Feb&quot; THEN 8&#13;&#10;WHEN &quot;Jan&quot; THEN 7&#13;&#10;WHEN &quot;Jul&quot; THEN 1&#13;&#10;WHEN &quot;Jun&quot; THEN 12&#13;&#10;WHEN &quot;Mar&quot; THEN 9&#13;&#10;WHEN &quot;May&quot; THEN 11&#13;&#10;WHEN &quot;Nov&quot; THEN 5&#13;&#10;WHEN &quot;Oct&quot; THEN 4&#13;&#10;WHEN &quot;Sep&quot; THEN 3&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column aggregation='Sum' caption='Order of Angle (Nightingale 2 )' datatype='integer' name='[Calculation_2293739616357904387]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='CASE [Month (Nightingale Data!2 1854-55)]&#13;&#10;&#13;&#10;&#13;&#10;WHEN &quot;Apr&quot; THEN 10&#13;&#10;WHEN &quot;Aug&quot; THEN 2&#13;&#10;WHEN &quot;Dec&quot; THEN 6&#13;&#10;WHEN &quot;Feb&quot; THEN 8&#13;&#10;WHEN &quot;Jan&quot; THEN 7&#13;&#10;WHEN &quot;Jul&quot; THEN 1&#13;&#10;WHEN &quot;Jun&quot; THEN 12&#13;&#10;WHEN &quot;Mar&quot; THEN 9&#13;&#10;WHEN &quot;May&quot; THEN 11&#13;&#10;WHEN &quot;Nov&quot; THEN 5&#13;&#10;WHEN &quot;Oct&quot; THEN 4&#13;&#10;WHEN &quot;Sep&quot; THEN 3&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column aggregation='Sum' caption='Order of Radius' datatype='integer' name='[Calculation_2293739616358170628]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='CASE [Cause]&#13;&#10;&#13;&#10;WHEN &quot;diseases&quot; THEN 3&#13;&#10;WHEN &quot;other&quot; THEN 2&#13;&#10;WHEN &quot;wounds&quot; THEN 1&#13;&#10;END' />
+      </column>
+      <column caption='id' datatype='string' name='[Calculation_2293739616358367237]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='STR([Calculation_2293739616358170628])+RIGHT(&quot;0&quot;+STR([Calculation_2293739616357695490]),2)+RIGHT(&quot;0&quot;+STR([Calculation_2293739616357904387]),2)' />
+      </column>
+      <column caption='Calculation1' datatype='real' name='[Calculation_2293739616359391239]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_2293739616357904387] : MAX(IF [Calculation_2293739616357695490]=[Calculation_2293739616357904387] AND [Calculation_2293739616358170628]=1 THEN [Value] ELSE 0 END ) }' />
+      </column>
+      <column caption='Calculation2' datatype='real' name='[Calculation_2293739616359690248]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_2293739616357904387] : MAX(IF [Calculation_2293739616357695490]=[Calculation_2293739616357904387] AND [Calculation_2293739616358170628]=2 THEN [Value] ELSE 0 END ) }' />
+      </column>
+      <column caption='Calculation3' datatype='real' name='[Calculation_2293739616359731209]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_2293739616357904387] : MAX(IF [Calculation_2293739616357695490]=[Calculation_2293739616357904387] AND [Calculation_2293739616358170628]=3 THEN [Value] ELSE 0 END ) }' />
+      </column>
+      <column caption='Coxcomb_color' datatype='string' name='[Calculation_2293739616359809034]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [Calculation_2293739616357695490]=[Calculation_2293739616357904387] &#13;&#10;THEN STR([Calculation_2293739616358170628])+&quot;-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359391239]&lt;=[Calculation_2293739616359690248] AND [Calculation_2293739616359690248]&lt;=[Calculation_2293739616359731209] AND [Calculation_2293739616359391239]&lt;=[Calculation_2293739616359731209]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359391239]&lt;=[Calculation_2293739616359731209] AND [Calculation_2293739616359731209]&lt;=[Calculation_2293739616359690248] AND [Calculation_2293739616359391239]&lt;=[Calculation_2293739616359690248]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359690248]&lt;=[Calculation_2293739616359391239] AND [Calculation_2293739616359391239]&lt;=[Calculation_2293739616359731209] AND [Calculation_2293739616359690248]&lt;=[Calculation_2293739616359731209]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359690248]&lt;=[Calculation_2293739616359731209] AND [Calculation_2293739616359731209]&lt;=[Calculation_2293739616359391239] AND [Calculation_2293739616359690248]&lt;=[Calculation_2293739616359391239]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359731209]&lt;=[Calculation_2293739616359391239] AND [Calculation_2293739616359391239]&lt;=[Calculation_2293739616359690248] AND [Calculation_2293739616359731209]&lt;=[Calculation_2293739616359690248]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359731209]&lt;=[Calculation_2293739616359690248] AND [Calculation_2293739616359690248]&lt;=[Calculation_2293739616359391239] AND [Calculation_2293739616359731209]&lt;=[Calculation_2293739616359391239]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column caption='X-axis' datatype='real' name='[Calculation_2293739616360706059]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([Value])/100+ATTR([Calculation_2293739616358170628])/10000+ATTR([Calculation_2293739616357695490])/1000000' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='integer' name='[Year (Nightingale Data!2 1854-55)]' role='dimension' type='quantitative' />
+      <column-instance column='[Calculation_2293739616359809034]' derivation='None' name='[none:Calculation_2293739616359809034:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.582834' measure-ordering='alphabetic' measure-percentage='0.417166' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Calculation_2293739616359809034:nk]' type='palette'>
+            <map to='#000041'>
+              <bucket>&quot;2-0&quot;</bucket>
+            </map>
+            <map to='#000041'>
+              <bucket>&quot;2-1&quot;</bucket>
+            </map>
+            <map to='#0055ff'>
+              <bucket>&quot;3-0&quot;</bucket>
+            </map>
+            <map to='#0055ff'>
+              <bucket>&quot;3-1&quot;</bucket>
+            </map>
+            <map to='#d9fffe'>
+              <bucket>&quot;Back&quot;</bucket>
+            </map>
+            <map to='#ffaaff'>
+              <bucket>&quot;1-0&quot;</bucket>
+            </map>
+            <map to='#ffaaff'>
+              <bucket>&quot;1-1&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Ireland&quot;' />
+      </semantic-values>
+    </datasource>
+    <datasource caption='Nightingale Data_2 1855-56+ (nightingaledata - 2)' inline='true' name='federated.0lkxadw0gjxtxq1g02nl413bcpdv' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='nightingaledata - 2' name='excel-direct.0yyd01c0ivr1431eyoa9r1pdlfg4'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='C:/Trinity/Data Visualisation/Assignment 2/nightingaledata - 2.xlsx' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='&quot;TRUE&quot;' />
+              <expression op='&quot;TRUE&quot;' />
+            </expression>
+          </clause>
+          <relation connection='excel-direct.0yyd01c0ivr1431eyoa9r1pdlfg4' name='Nightingale Data 1855-56' table='[&apos;Nightingale Data 1855-56$&apos;]' type='table'>
+            <columns gridOrigin='A1:D37:no:A1:D37:0' header='yes' outcome='6'>
+              <column datatype='string' name='Year' ordinal='0' />
+              <column datatype='string' name='Month' ordinal='1' />
+              <column datatype='string' name='Cause' ordinal='2' />
+              <column datatype='real' name='Value' ordinal='3' />
+            </columns>
+          </relation>
+          <relation connection='excel-direct.0yyd01c0ivr1431eyoa9r1pdlfg4' name='Nightingale Data_2 1855-56' table='[&apos;Nightingale Data_2 1855-56$&apos;]' type='table'>
+            <columns gridOrigin='A1:D37:no:A1:D37:0' header='yes' outcome='6'>
+              <column datatype='integer' name='Year' ordinal='0' />
+              <column datatype='string' name='Month' ordinal='1' />
+              <column datatype='string' name='Cause' ordinal='2' />
+              <column datatype='real' name='Value' ordinal='3' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[Cause (Nightingale Data!2 1855-56)]' value='[Nightingale Data_2 1855-56].[Cause]' />
+          <map key='[Cause]' value='[Nightingale Data 1855-56].[Cause]' />
+          <map key='[Month (Nightingale Data!2 1855-56)]' value='[Nightingale Data_2 1855-56].[Month]' />
+          <map key='[Month]' value='[Nightingale Data 1855-56].[Month]' />
+          <map key='[Value (Nightingale Data!2 1855-56)]' value='[Nightingale Data_2 1855-56].[Value]' />
+          <map key='[Value]' value='[Nightingale Data 1855-56].[Value]' />
+          <map key='[Year (Nightingale Data!2 1855-56)]' value='[Nightingale Data_2 1855-56].[Year]' />
+          <map key='[Year]' value='[Nightingale Data 1855-56].[Year]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Year]</local-name>
+            <parent-name>[Nightingale Data 1855-56]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Month</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Month]</local-name>
+            <parent-name>[Nightingale Data 1855-56]</parent-name>
+            <remote-alias>Month</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cause</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Cause]</local-name>
+            <parent-name>[Nightingale Data 1855-56]</parent-name>
+            <remote-alias>Cause</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Value</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Value]</local-name>
+            <parent-name>[Nightingale Data 1855-56]</parent-name>
+            <remote-alias>Value</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Nightingale Data 1855-56]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>1</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:D37:no:A1:D37:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Year (Nightingale Data!2 1855-56)]</local-name>
+            <parent-name>[Nightingale Data_2 1855-56]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Month</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Month (Nightingale Data!2 1855-56)]</local-name>
+            <parent-name>[Nightingale Data_2 1855-56]</parent-name>
+            <remote-alias>Month</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cause</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Cause (Nightingale Data!2 1855-56)]</local-name>
+            <parent-name>[Nightingale Data_2 1855-56]</parent-name>
+            <remote-alias>Cause</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIE_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Value</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Value (Nightingale Data!2 1855-56)]</local-name>
+            <parent-name>[Nightingale Data_2 1855-56]</parent-name>
+            <remote-alias>Value</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Nightingale Data_2 1855-56]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:D37:no:A1:D37:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Order of Angle' datatype='integer' name='[Calculation_2293739616369053713]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='CASE [Month]&#13;&#10;&#13;&#10;&#13;&#10;WHEN &quot;Apr&quot; THEN 10&#13;&#10;WHEN &quot;Aug&quot; THEN 2&#13;&#10;WHEN &quot;Dec&quot; THEN 6&#13;&#10;WHEN &quot;Feb&quot; THEN 8&#13;&#10;WHEN &quot;Jan&quot; THEN 7&#13;&#10;WHEN &quot;Jul&quot; THEN 1&#13;&#10;WHEN &quot;Jun&quot; THEN 12&#13;&#10;WHEN &quot;Mar&quot; THEN 9&#13;&#10;WHEN &quot;May&quot; THEN 11&#13;&#10;WHEN &quot;Nov&quot; THEN 5&#13;&#10;WHEN &quot;Oct&quot; THEN 4&#13;&#10;WHEN &quot;Sep&quot; THEN 3&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column caption='Order of Angle (Nightingale 2 )' datatype='integer' name='[Calculation_2293739616369221650]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='CASE [Month (Nightingale Data!2 1855-56)]&#13;&#10;&#13;&#10;&#13;&#10;WHEN &quot;Apr&quot; THEN 10&#13;&#10;WHEN &quot;Aug&quot; THEN 2&#13;&#10;WHEN &quot;Dec&quot; THEN 6&#13;&#10;WHEN &quot;Feb&quot; THEN 8&#13;&#10;WHEN &quot;Jan&quot; THEN 7&#13;&#10;WHEN &quot;Jul&quot; THEN 1&#13;&#10;WHEN &quot;Jun&quot; THEN 12&#13;&#10;WHEN &quot;Mar&quot; THEN 9&#13;&#10;WHEN &quot;May&quot; THEN 11&#13;&#10;WHEN &quot;Nov&quot; THEN 5&#13;&#10;WHEN &quot;Oct&quot; THEN 4&#13;&#10;WHEN &quot;Sep&quot; THEN 3&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column caption='Order of Radius' datatype='integer' name='[Calculation_2293739616369627156]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='CASE [Cause]&#13;&#10;&#13;&#10;WHEN &quot;diseases&quot; THEN 3&#13;&#10;WHEN &quot;other&quot; THEN 2&#13;&#10;WHEN &quot;wounds&quot; THEN 1&#13;&#10;END' />
+      </column>
+      <column caption='Calculation1' datatype='real' name='[Calculation_2293739616369840149]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_2293739616369221650] : MAX(IF [Calculation_2293739616369053713]=[Calculation_2293739616369221650] AND [Calculation_2293739616369627156]=1 THEN [Value] ELSE 0 END ) }' />
+      </column>
+      <column caption='Calculation2' datatype='real' name='[Calculation_2293739616369897494]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_2293739616369221650] : MAX(IF [Calculation_2293739616369053713]=[Calculation_2293739616369221650] AND [Calculation_2293739616369627156]=2 THEN [Value] ELSE 0 END ) }' />
+      </column>
+      <column caption='Calculation3' datatype='real' name='[Calculation_2293739616369938455]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_2293739616369221650] : MAX(IF [Calculation_2293739616369053713]=[Calculation_2293739616369221650] AND [Calculation_2293739616369627156]=3 THEN [Value] ELSE 0 END ) }' />
+      </column>
+      <column caption='X-Axis' datatype='real' name='[Calculation_2293739616370024472]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([Value])/100+ATTR([Calculation_2293739616369627156])/10000+ATTR([Calculation_2293739616369053713])/1000000' />
+      </column>
+      <column caption='id' datatype='string' name='[Calculation_2293739616370114585]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='STR([Calculation_2293739616369627156])+RIGHT(&quot;0&quot;+STR([Calculation_2293739616369053713]),2)+RIGHT(&quot;0&quot;+STR([Calculation_2293739616369221650]),2)' />
+      </column>
+      <column caption='Coxcomb_color' datatype='string' name='[Calculation_2293739616370200602]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [Calculation_2293739616369053713]=[Calculation_2293739616369221650] &#13;&#10;THEN STR([Calculation_2293739616369627156])+&quot;-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369840149]&lt;=[Calculation_2293739616369897494] AND [Calculation_2293739616369897494]&lt;=[Calculation_2293739616369938455] AND [Calculation_2293739616369840149]&lt;=[Calculation_2293739616369938455]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369840149]&lt;=[Calculation_2293739616369938455] AND [Calculation_2293739616369938455]&lt;=[Calculation_2293739616369897494] AND [Calculation_2293739616369840149]&lt;=[Calculation_2293739616369897494]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369897494]&lt;=[Calculation_2293739616369840149] AND [Calculation_2293739616369840149]&lt;=[Calculation_2293739616369938455] AND [Calculation_2293739616369897494]&lt;=[Calculation_2293739616369938455]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369897494]&lt;=[Calculation_2293739616369938455] AND [Calculation_2293739616369938455]&lt;=[Calculation_2293739616369840149] AND [Calculation_2293739616369897494]&lt;=[Calculation_2293739616369840149]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369938455]&lt;=[Calculation_2293739616369840149] AND [Calculation_2293739616369840149]&lt;=[Calculation_2293739616369897494] AND [Calculation_2293739616369938455]&lt;=[Calculation_2293739616369897494]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369938455]&lt;=[Calculation_2293739616369897494] AND [Calculation_2293739616369897494]&lt;=[Calculation_2293739616369840149] AND [Calculation_2293739616369938455]&lt;=[Calculation_2293739616369840149]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='integer' name='[Year (Nightingale Data!2 1855-56)]' role='dimension' type='quantitative' />
+      <column-instance column='[Calculation_2293739616370200602]' derivation='None' name='[none:Calculation_2293739616370200602:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.582834' measure-ordering='alphabetic' measure-percentage='0.417166' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Calculation_2293739616370200602:nk]' type='palette'>
+            <map to='#000041'>
+              <bucket>&quot;1-0&quot;</bucket>
+            </map>
+            <map to='#000041'>
+              <bucket>&quot;1-1&quot;</bucket>
+            </map>
+            <map to='#0055ff'>
+              <bucket>&quot;3-0&quot;</bucket>
+            </map>
+            <map to='#0055ff'>
+              <bucket>&quot;3-1&quot;</bucket>
+            </map>
+            <map to='#d9fffe'>
+              <bucket>&quot;Back&quot;</bucket>
+            </map>
+            <map to='#ffaaff'>
+              <bucket>&quot;2-0&quot;</bucket>
+            </map>
+            <map to='#ffaaff'>
+              <bucket>&quot;2-1&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Ireland&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Coxcomb 1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1' fontname='Sitka' fontsize='14' underline='true'>April 1854 to March 1855</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Nightingale Data 1854-55+ (nightingaledata - 2)' name='federated.05p0hvn08gnzdk160ni5y1tob883' />
+          </datasources>
+          <datasource-dependencies datasource='federated.05p0hvn08gnzdk160ni5y1tob883'>
+            <column aggregation='Sum' caption='Order of Angle' datatype='integer' name='[Calculation_2293739616357695490]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='CASE [Month]&#13;&#10;&#13;&#10;&#13;&#10;WHEN &quot;Apr&quot; THEN 10&#13;&#10;WHEN &quot;Aug&quot; THEN 2&#13;&#10;WHEN &quot;Dec&quot; THEN 6&#13;&#10;WHEN &quot;Feb&quot; THEN 8&#13;&#10;WHEN &quot;Jan&quot; THEN 7&#13;&#10;WHEN &quot;Jul&quot; THEN 1&#13;&#10;WHEN &quot;Jun&quot; THEN 12&#13;&#10;WHEN &quot;Mar&quot; THEN 9&#13;&#10;WHEN &quot;May&quot; THEN 11&#13;&#10;WHEN &quot;Nov&quot; THEN 5&#13;&#10;WHEN &quot;Oct&quot; THEN 4&#13;&#10;WHEN &quot;Sep&quot; THEN 3&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column aggregation='Sum' caption='Order of Angle (Nightingale 2 )' datatype='integer' name='[Calculation_2293739616357904387]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='CASE [Month (Nightingale Data!2 1854-55)]&#13;&#10;&#13;&#10;&#13;&#10;WHEN &quot;Apr&quot; THEN 10&#13;&#10;WHEN &quot;Aug&quot; THEN 2&#13;&#10;WHEN &quot;Dec&quot; THEN 6&#13;&#10;WHEN &quot;Feb&quot; THEN 8&#13;&#10;WHEN &quot;Jan&quot; THEN 7&#13;&#10;WHEN &quot;Jul&quot; THEN 1&#13;&#10;WHEN &quot;Jun&quot; THEN 12&#13;&#10;WHEN &quot;Mar&quot; THEN 9&#13;&#10;WHEN &quot;May&quot; THEN 11&#13;&#10;WHEN &quot;Nov&quot; THEN 5&#13;&#10;WHEN &quot;Oct&quot; THEN 4&#13;&#10;WHEN &quot;Sep&quot; THEN 3&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column aggregation='Sum' caption='Order of Radius' datatype='integer' name='[Calculation_2293739616358170628]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='CASE [Cause]&#13;&#10;&#13;&#10;WHEN &quot;diseases&quot; THEN 3&#13;&#10;WHEN &quot;other&quot; THEN 2&#13;&#10;WHEN &quot;wounds&quot; THEN 1&#13;&#10;END' />
+            </column>
+            <column caption='id' datatype='string' name='[Calculation_2293739616358367237]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR([Calculation_2293739616358170628])+RIGHT(&quot;0&quot;+STR([Calculation_2293739616357695490]),2)+RIGHT(&quot;0&quot;+STR([Calculation_2293739616357904387]),2)' />
+            </column>
+            <column caption='Calculation1' datatype='real' name='[Calculation_2293739616359391239]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [Calculation_2293739616357904387] : MAX(IF [Calculation_2293739616357695490]=[Calculation_2293739616357904387] AND [Calculation_2293739616358170628]=1 THEN [Value] ELSE 0 END ) }' />
+            </column>
+            <column caption='Calculation2' datatype='real' name='[Calculation_2293739616359690248]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [Calculation_2293739616357904387] : MAX(IF [Calculation_2293739616357695490]=[Calculation_2293739616357904387] AND [Calculation_2293739616358170628]=2 THEN [Value] ELSE 0 END ) }' />
+            </column>
+            <column caption='Calculation3' datatype='real' name='[Calculation_2293739616359731209]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [Calculation_2293739616357904387] : MAX(IF [Calculation_2293739616357695490]=[Calculation_2293739616357904387] AND [Calculation_2293739616358170628]=3 THEN [Value] ELSE 0 END ) }' />
+            </column>
+            <column caption='Coxcomb_color' datatype='string' name='[Calculation_2293739616359809034]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_2293739616357695490]=[Calculation_2293739616357904387] &#13;&#10;THEN STR([Calculation_2293739616358170628])+&quot;-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359391239]&lt;=[Calculation_2293739616359690248] AND [Calculation_2293739616359690248]&lt;=[Calculation_2293739616359731209] AND [Calculation_2293739616359391239]&lt;=[Calculation_2293739616359731209]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359391239]&lt;=[Calculation_2293739616359731209] AND [Calculation_2293739616359731209]&lt;=[Calculation_2293739616359690248] AND [Calculation_2293739616359391239]&lt;=[Calculation_2293739616359690248]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359690248]&lt;=[Calculation_2293739616359391239] AND [Calculation_2293739616359391239]&lt;=[Calculation_2293739616359731209] AND [Calculation_2293739616359690248]&lt;=[Calculation_2293739616359731209]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359690248]&lt;=[Calculation_2293739616359731209] AND [Calculation_2293739616359731209]&lt;=[Calculation_2293739616359391239] AND [Calculation_2293739616359690248]&lt;=[Calculation_2293739616359391239]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359731209]&lt;=[Calculation_2293739616359391239] AND [Calculation_2293739616359391239]&lt;=[Calculation_2293739616359690248] AND [Calculation_2293739616359731209]&lt;=[Calculation_2293739616359690248]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616359731209]&lt;=[Calculation_2293739616359690248] AND [Calculation_2293739616359690248]&lt;=[Calculation_2293739616359391239] AND [Calculation_2293739616359731209]&lt;=[Calculation_2293739616359391239]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616359731209]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359690248]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSEIF [Calculation_2293739616359391239]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616357904387]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='X-axis' datatype='real' name='[Calculation_2293739616360706059]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([Value])/100+ATTR([Calculation_2293739616358170628])/10000+ATTR([Calculation_2293739616357695490])/1000000' />
+            </column>
+            <column datatype='string' name='[Cause]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Month (Nightingale Data!2 1854-55)]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Month]' role='dimension' type='nominal' />
+            <column datatype='real' name='[Value]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Year]' role='dimension' type='nominal' />
+            <column-instance column='[Month]' derivation='Attribute' name='[attr:Month:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Year]' derivation='Attribute' name='[attr:Year:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Value]' derivation='Avg' name='[avg:Value:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2293739616358367237]' derivation='None' name='[none:Calculation_2293739616358367237:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_2293739616359809034]' derivation='None' name='[none:Calculation_2293739616359809034:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_2293739616360706059]' derivation='User' name='[usr:Calculation_2293739616360706059:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]' included-values='all' />
+          <slices>
+            <column>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]' field-type='quantitative' major-origin='0.0' major-show='false' major-spacing='10000.0' max='10000.0' min='-10000.0' minor-origin='0.0' minor-show='false' minor-spacing='1000.0' range-type='fixed' reverse='true' scope='cols' type='space' />
+            <format attr='display' class='0' field='[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]' scope='cols' value='true' />
+            <format attr='height' field='[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]' value='56' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size' field='[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]' field-type='quantitative' max-size='1' min-size='0.00345189' type='quantsize' />
+          </style-rule>
+          <style-rule element='annotation'>
+            <format attr='body-type' id='annotation_0' value='none' />
+            <format attr='line-visibility' id='annotation_0' value='off' />
+            <format attr='line-visibility' id='annotation_1' value='off' />
+            <format attr='body-type' id='annotation_1' value='none' />
+            <format attr='body-type' id='annotation_2' value='none' />
+            <format attr='line-visibility' id='annotation_2' value='off' />
+            <format attr='body-type' id='annotation_3' value='none' />
+            <format attr='line-visibility' id='annotation_3' value='off' />
+            <format attr='body-type' id='annotation_4' value='none' />
+            <format attr='line-visibility' id='annotation_4' value='off' />
+            <format attr='body-type' id='annotation_5' value='none' />
+            <format attr='line-visibility' id='annotation_5' value='off' />
+            <format attr='body-type' id='annotation_6' value='none' />
+            <format attr='line-visibility' id='annotation_6' value='off' />
+            <format attr='body-type' id='annotation_7' value='none' />
+            <format attr='line-visibility' id='annotation_7' value='off' />
+            <format attr='body-type' id='annotation_8' value='none' />
+            <format attr='line-visibility' id='annotation_8' value='on' />
+            <format attr='line-pattern-only' id='annotation_8' value='solid' />
+            <format attr='stroke-size' id='annotation_8' value='2' />
+            <format attr='stroke-color' id='annotation_8' value='#898989' />
+            <format attr='body-type' id='annotation_9' value='none' />
+            <format attr='stroke-color' id='annotation_9' value='#898989' />
+            <format attr='stroke-size' id='annotation_9' value='2' />
+            <format attr='body-type' id='annotation_10' value='none' />
+            <format attr='stroke-size' id='annotation_10' value='2' />
+            <format attr='stroke-color' id='annotation_10' value='#898989' />
+            <format attr='body-type' id='annotation_11' value='none' />
+            <format attr='line-visibility' id='annotation_11' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <encodings>
+              <lod column='[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]' />
+              <color column='[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]' />
+              <size column='[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]' />
+              <tooltip column='[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]' />
+              <tooltip column='[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='2.8969628810882568' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</cols>
+        <annotations>
+          <annotation class='point' id='0' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>July</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>150.0</value>
+                    <value>&quot;30101&quot;</value>
+                    <value>&quot;3-1&quot;</value>
+                    <value>&quot;Jul&quot;</value>
+                    <value>&quot;1854&quot;</value>
+                    <value>4.5003010000000003</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='5' y='-23' />
+          </annotation>
+          <annotation class='point' id='1' mark-position='1' pullback='0' text-width='152'>
+            <formatted-text>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>August</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>328.5</value>
+                    <value>&quot;30202&quot;</value>
+                    <value>&quot;3-0&quot;</value>
+                    <value>&quot;Aug&quot;</value>
+                    <value>&quot;1854&quot;</value>
+                    <value>9.855302</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='29' y='-9' />
+          </annotation>
+          <annotation class='point' id='2' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run bold='true' fontcolor='#555555' fontsize='9'>September</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>312.19999999999999</value>
+                    <value>&quot;30303&quot;</value>
+                    <value>&quot;3-1&quot;</value>
+                    <value>&quot;Sep&quot;</value>
+                    <value>&quot;1854&quot;</value>
+                    <value>9.3663029999999985</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='87' y='-14' />
+          </annotation>
+          <annotation class='point' id='3' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>October</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>197.0</value>
+                    <value>&quot;30404&quot;</value>
+                    <value>&quot;3-0&quot;</value>
+                    <value>&quot;Oct&quot;</value>
+                    <value>&quot;1854&quot;</value>
+                    <value>5.910304</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='92' y='4' />
+          </annotation>
+          <annotation class='point' id='4' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>November</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>340.60000000000002</value>
+                    <value>&quot;30505&quot;</value>
+                    <value>&quot;3-1&quot;</value>
+                    <value>&quot;Nov&quot;</value>
+                    <value>&quot;1854&quot;</value>
+                    <value>10.218304999999999</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='78' y='8' />
+          </annotation>
+          <annotation class='point' id='5' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontalignment='0' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>December</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>631.5</value>
+                    <value>&quot;30606&quot;</value>
+                    <value>&quot;3-0&quot;</value>
+                    <value>&quot;Dec&quot;</value>
+                    <value>&quot;1854&quot;</value>
+                    <value>18.945305999999999</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='59' y='12' />
+          </annotation>
+          <annotation class='point' id='6' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>Æ </run>
+              <run bold='true' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>&lt;[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run bold='true' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>January</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>1022.7999999999998</value>
+                    <value>&quot;30707&quot;</value>
+                    <value>&quot;3-1&quot;</value>
+                    <value>&quot;Jan&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>30.684306999999997</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-84' y='17' />
+          </annotation>
+          <annotation class='point' id='7' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontalignment='2' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>February</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>822.79999999999984</value>
+                    <value>&quot;30808&quot;</value>
+                    <value>&quot;3-0&quot;</value>
+                    <value>&quot;Feb&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>24.684307999999998</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-77' y='10' />
+          </annotation>
+          <annotation class='point' id='8' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run bold='true' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>June</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>2.5</value>
+                    <value>&quot;21212&quot;</value>
+                    <value>&quot;2-0&quot;</value>
+                    <value>&quot;Jun&quot;</value>
+                    <value>&quot;1854&quot;</value>
+                    <value>0.075212000000000001</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-13' y='-46' />
+          </annotation>
+          <annotation class='point' id='9' mark-position='1' pullback='12' text-width='64'>
+            <formatted-text>
+              <run fontalignment='0' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>July</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>6.2000000000000002</value>
+                    <value>&quot;31111&quot;</value>
+                    <value>&quot;3-1&quot;</value>
+                    <value>&quot;May&quot;</value>
+                    <value>&quot;1854&quot;</value>
+                    <value>0.18631100000000003</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-28' y='-34' />
+          </annotation>
+          <annotation class='point' id='10' mark-position='1' pullback='12' text-width='102'>
+            <formatted-text>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>&lt;[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>April</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>6.2000000000000002</value>
+                    <value>&quot;31110&quot;</value>
+                    <value>&quot;2-0&quot;</value>
+                    <value>&quot;May&quot;</value>
+                    <value>&quot;1854&quot;</value>
+                    <value>0.18631100000000003</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-99' y='-15' />
+          </annotation>
+          <annotation class='point' id='11' mark-position='1' pullback='12' text-width='150'>
+            <formatted-text>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>1855</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>March</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Month:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[attr:Year:nk]</field>
+                      <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>480.30000000000001</value>
+                    <value>&quot;30909&quot;</value>
+                    <value>&quot;3-1&quot;</value>
+                    <value>&quot;Mar&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>14.409309</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-89' y='4' />
+          </annotation>
+        </annotations>
+      </table>
+      <simple-id uuid='{644CFF57-CA68-4B8F-BAAF-DFD892AEAA9D}' />
+    </worksheet>
+    <worksheet name='Coxcomb 2'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1' fontname='Sitka' fontsize='14' underline='true'>April 1855 to March 1856</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Nightingale Data_2 1855-56+ (nightingaledata - 2)' name='federated.0lkxadw0gjxtxq1g02nl413bcpdv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0lkxadw0gjxtxq1g02nl413bcpdv'>
+            <column caption='Order of Angle' datatype='integer' name='[Calculation_2293739616369053713]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='CASE [Month]&#13;&#10;&#13;&#10;&#13;&#10;WHEN &quot;Apr&quot; THEN 10&#13;&#10;WHEN &quot;Aug&quot; THEN 2&#13;&#10;WHEN &quot;Dec&quot; THEN 6&#13;&#10;WHEN &quot;Feb&quot; THEN 8&#13;&#10;WHEN &quot;Jan&quot; THEN 7&#13;&#10;WHEN &quot;Jul&quot; THEN 1&#13;&#10;WHEN &quot;Jun&quot; THEN 12&#13;&#10;WHEN &quot;Mar&quot; THEN 9&#13;&#10;WHEN &quot;May&quot; THEN 11&#13;&#10;WHEN &quot;Nov&quot; THEN 5&#13;&#10;WHEN &quot;Oct&quot; THEN 4&#13;&#10;WHEN &quot;Sep&quot; THEN 3&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='Order of Angle (Nightingale 2 )' datatype='integer' name='[Calculation_2293739616369221650]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='CASE [Month (Nightingale Data!2 1855-56)]&#13;&#10;&#13;&#10;&#13;&#10;WHEN &quot;Apr&quot; THEN 10&#13;&#10;WHEN &quot;Aug&quot; THEN 2&#13;&#10;WHEN &quot;Dec&quot; THEN 6&#13;&#10;WHEN &quot;Feb&quot; THEN 8&#13;&#10;WHEN &quot;Jan&quot; THEN 7&#13;&#10;WHEN &quot;Jul&quot; THEN 1&#13;&#10;WHEN &quot;Jun&quot; THEN 12&#13;&#10;WHEN &quot;Mar&quot; THEN 9&#13;&#10;WHEN &quot;May&quot; THEN 11&#13;&#10;WHEN &quot;Nov&quot; THEN 5&#13;&#10;WHEN &quot;Oct&quot; THEN 4&#13;&#10;WHEN &quot;Sep&quot; THEN 3&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='Order of Radius' datatype='integer' name='[Calculation_2293739616369627156]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='CASE [Cause]&#13;&#10;&#13;&#10;WHEN &quot;diseases&quot; THEN 3&#13;&#10;WHEN &quot;other&quot; THEN 2&#13;&#10;WHEN &quot;wounds&quot; THEN 1&#13;&#10;END' />
+            </column>
+            <column caption='Calculation1' datatype='real' name='[Calculation_2293739616369840149]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [Calculation_2293739616369221650] : MAX(IF [Calculation_2293739616369053713]=[Calculation_2293739616369221650] AND [Calculation_2293739616369627156]=1 THEN [Value] ELSE 0 END ) }' />
+            </column>
+            <column caption='Calculation2' datatype='real' name='[Calculation_2293739616369897494]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [Calculation_2293739616369221650] : MAX(IF [Calculation_2293739616369053713]=[Calculation_2293739616369221650] AND [Calculation_2293739616369627156]=2 THEN [Value] ELSE 0 END ) }' />
+            </column>
+            <column caption='Calculation3' datatype='real' name='[Calculation_2293739616369938455]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [Calculation_2293739616369221650] : MAX(IF [Calculation_2293739616369053713]=[Calculation_2293739616369221650] AND [Calculation_2293739616369627156]=3 THEN [Value] ELSE 0 END ) }' />
+            </column>
+            <column caption='X-Axis' datatype='real' name='[Calculation_2293739616370024472]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([Value])/100+ATTR([Calculation_2293739616369627156])/10000+ATTR([Calculation_2293739616369053713])/1000000' />
+            </column>
+            <column caption='id' datatype='string' name='[Calculation_2293739616370114585]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR([Calculation_2293739616369627156])+RIGHT(&quot;0&quot;+STR([Calculation_2293739616369053713]),2)+RIGHT(&quot;0&quot;+STR([Calculation_2293739616369221650]),2)' />
+            </column>
+            <column caption='Coxcomb_color' datatype='string' name='[Calculation_2293739616370200602]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_2293739616369053713]=[Calculation_2293739616369221650] &#13;&#10;THEN STR([Calculation_2293739616369627156])+&quot;-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369840149]&lt;=[Calculation_2293739616369897494] AND [Calculation_2293739616369897494]&lt;=[Calculation_2293739616369938455] AND [Calculation_2293739616369840149]&lt;=[Calculation_2293739616369938455]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369840149]&lt;=[Calculation_2293739616369938455] AND [Calculation_2293739616369938455]&lt;=[Calculation_2293739616369897494] AND [Calculation_2293739616369840149]&lt;=[Calculation_2293739616369897494]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369897494]&lt;=[Calculation_2293739616369840149] AND [Calculation_2293739616369840149]&lt;=[Calculation_2293739616369938455] AND [Calculation_2293739616369897494]&lt;=[Calculation_2293739616369938455]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369897494]&lt;=[Calculation_2293739616369938455] AND [Calculation_2293739616369938455]&lt;=[Calculation_2293739616369840149] AND [Calculation_2293739616369897494]&lt;=[Calculation_2293739616369840149]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369938455]&lt;=[Calculation_2293739616369840149] AND [Calculation_2293739616369840149]&lt;=[Calculation_2293739616369897494] AND [Calculation_2293739616369938455]&lt;=[Calculation_2293739616369897494]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;ELSEIF &#13;&#10;[Calculation_2293739616369938455]&lt;=[Calculation_2293739616369897494] AND [Calculation_2293739616369897494]&lt;=[Calculation_2293739616369840149] AND [Calculation_2293739616369938455]&lt;=[Calculation_2293739616369840149]&#13;&#10; THEN &#13;&#10;  IF     [Calculation_2293739616369938455]  &gt;=([Value]) THEN &quot;3-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369897494]  &gt;=([Value]) THEN &quot;2-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSEIF [Calculation_2293739616369840149]  &gt;=([Value]) THEN &quot;1-&quot;+STR([Calculation_2293739616369221650]%2)&#13;&#10;  ELSE   &quot;Back&quot;&#13;&#10;  END&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column datatype='string' name='[Cause]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Month (Nightingale Data!2 1855-56)]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Month]' role='dimension' type='nominal' />
+            <column datatype='real' name='[Value]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Year]' role='dimension' type='nominal' />
+            <column-instance column='[Month]' derivation='Attribute' name='[attr:Month:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Year]' derivation='Attribute' name='[attr:Year:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Value]' derivation='Avg' name='[avg:Value:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2293739616370114585]' derivation='None' name='[none:Calculation_2293739616370114585:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_2293739616370200602]' derivation='None' name='[none:Calculation_2293739616370200602:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Cause]' derivation='None' name='[none:Cause:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_2293739616370024472]' derivation='User' name='[usr:Calculation_2293739616370024472:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Cause:nk]'>
+            <groupfilter from='&quot;diseases&quot;' function='range' level='[none:Cause:nk]' to='&quot;wounds&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Cause:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]' field-type='quantitative' major-origin='0.0' major-show='false' major-spacing='10000.0' max='10000.0' min='-10000.0' range-type='fixed' reverse='true' scope='cols' type='space' />
+            <format attr='display' class='0' field='[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]' scope='cols' value='false' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size' field='[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]' field-type='quantitative' max-size='1' min-size='0.00193303' type='quantsize' />
+          </style-rule>
+          <style-rule element='annotation'>
+            <format attr='body-type' id='annotation_0' value='none' />
+            <format attr='line-visibility' id='annotation_0' value='off' />
+            <format attr='body-type' id='annotation_1' value='none' />
+            <format attr='line-visibility' id='annotation_1' value='off' />
+            <format attr='body-type' id='annotation_2' value='none' />
+            <format attr='line-visibility' id='annotation_2' value='off' />
+            <format attr='body-type' id='annotation_3' value='none' />
+            <format attr='line-visibility' id='annotation_3' value='off' />
+            <format attr='body-type' id='annotation_4' value='none' />
+            <format attr='line-visibility' id='annotation_4' value='off' />
+            <format attr='body-type' id='annotation_5' value='none' />
+            <format attr='line-visibility' id='annotation_5' value='off' />
+            <format attr='body-type' id='annotation_6' value='none' />
+            <format attr='line-visibility' id='annotation_6' value='off' />
+            <format attr='body-type' id='annotation_7' value='none' />
+            <format attr='line-visibility' id='annotation_7' value='off' />
+            <format attr='body-type' id='annotation_8' value='none' />
+            <format attr='line-visibility' id='annotation_8' value='on' />
+            <format attr='line-pattern-only' id='annotation_8' value='solid' />
+            <format attr='stroke-size' id='annotation_8' value='2' />
+            <format attr='stroke-color' id='annotation_8' value='#898989' />
+            <format attr='body-type' id='annotation_9' value='none' />
+            <format attr='stroke-size' id='annotation_9' value='2' />
+            <format attr='line-visibility' id='annotation_9' value='on' />
+            <format attr='line-pattern-only' id='annotation_9' value='solid' />
+            <format attr='stroke-color' id='annotation_9' value='#898989' />
+            <format attr='body-type' id='annotation_10' value='none' />
+            <format attr='body-type' id='annotation_11' value='none' />
+            <format attr='stroke-color' id='annotation_11' value='#898989' />
+            <format attr='stroke-size' id='annotation_11' value='2' />
+            <format attr='line-end-size' id='annotation_11' value='medium' />
+            <format attr='stroke-size' id='annotation_10' value='2' />
+            <format attr='stroke-color' id='annotation_10' value='#898989' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <encodings>
+              <lod column='[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]' />
+              <color column='[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]' />
+              <size column='[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]' />
+              <tooltip column='[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]' />
+              <tooltip column='[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='5.1732220649719238' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</cols>
+        <annotations>
+          <annotation class='point' id='0' mark-position='1' pullback='12' text-width='92'>
+            <formatted-text>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>Æ </run>
+              <run bold='true' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>&lt;[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run bold='true' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>April</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>177.5</value>
+                    <value>&quot;31010&quot;</value>
+                    <value>&quot;3-0&quot;</value>
+                    <value>&quot;Apr&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>5.32531</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-26' y='-15' />
+          </annotation>
+          <annotation class='point' id='1' mark-position='1' pullback='12' text-width='111'>
+            <formatted-text>
+              <run fontalignment='2' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>May</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>171.80000000000004</value>
+                    <value>&quot;31111&quot;</value>
+                    <value>&quot;3-1&quot;</value>
+                    <value>&quot;May&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>5.1543110000000008</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-78' y='-13' />
+          </annotation>
+          <annotation class='point' id='2' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>June</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>247.59999999999999</value>
+                    <value>&quot;31212&quot;</value>
+                    <value>&quot;3-0&quot;</value>
+                    <value>&quot;Jun&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>7.428312</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-10' y='-15' />
+          </annotation>
+          <annotation class='point' id='3' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontalignment='0' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>July</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>107.5</value>
+                    <value>&quot;30101&quot;</value>
+                    <value>&quot;3-1&quot;</value>
+                    <value>&quot;Jul&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>3.2253010000000004</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='69' y='-16' />
+          </annotation>
+          <annotation class='point' id='4' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>August</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>129.90000000000001</value>
+                    <value>&quot;30202&quot;</value>
+                    <value>&quot;3-0&quot;</value>
+                    <value>&quot;Aug&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>3.8973020000000003</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='27' y='-12' />
+          </annotation>
+          <annotation class='point' id='5' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run bold='true' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>September</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>69.400000000000006</value>
+                    <value>&quot;10303&quot;</value>
+                    <value>&quot;1-1&quot;</value>
+                    <value>&quot;Sep&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>2.0821030000000005</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='39' y='-9' />
+          </annotation>
+          <annotation class='point' id='6' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontalignment='0' fontname='Tableau Semibold' fontsize='9'>October</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>32.799999999999997</value>
+                    <value>&quot;30404&quot;</value>
+                    <value>&quot;3-0&quot;</value>
+                    <value>&quot;Oct&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>0.98430399999999985</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='87' y='3' />
+          </annotation>
+          <annotation class='point' id='7' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontalignment='0' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>November</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>56.399999999999999</value>
+                    <value>&quot;30505&quot;</value>
+                    <value>&quot;3-1&quot;</value>
+                    <value>&quot;Nov&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>1.6923049999999999</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='81' y='8' />
+          </annotation>
+          <annotation class='point' id='8' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>December</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>25.300000000000001</value>
+                    <value>&quot;30606&quot;</value>
+                    <value>&quot;3-0&quot;</value>
+                    <value>&quot;Dec&quot;</value>
+                    <value>&quot;1855&quot;</value>
+                    <value>0.75930599999999993</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='4' y='44' />
+          </annotation>
+          <annotation class='point' id='9' mark-position='1' pullback='12' text-width='91'>
+            <formatted-text>
+              <run bold='true' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>&lt;[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]&gt;</run>
+              <run>Æ&#10;</run>
+              <run fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>January</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>13.0</value>
+                    <value>&quot;20707&quot;</value>
+                    <value>&quot;2-1&quot;</value>
+                    <value>&quot;Jan&quot;</value>
+                    <value>&quot;1856&quot;</value>
+                    <value>0.39020699999999997</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-19' y='65' />
+          </annotation>
+          <annotation class='point' id='10' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontalignment='2' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>&lt;[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]&gt;</run>
+              <run fontalignment='2'>Æ&#10;</run>
+              <run fontalignment='2' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>March</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>9.0999999999999996</value>
+                    <value>&quot;20909&quot;</value>
+                    <value>&quot;2-1&quot;</value>
+                    <value>&quot;Mar&quot;</value>
+                    <value>&quot;1856&quot;</value>
+                    <value>0.27320899999999992</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-125' y='5' />
+          </annotation>
+          <annotation class='point' id='11' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run bold='true' fontcolor='#555555' fontname='Tableau Semibold' fontsize='9'>February</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                      </x-fields>
+                      <y-fields />
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Month:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[attr:Year:nk]</field>
+                      <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[usr:Calculation_2293739616370024472:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>6.5999999999999988</value>
+                    <value>&quot;30808&quot;</value>
+                    <value>&quot;3-0&quot;</value>
+                    <value>&quot;Feb&quot;</value>
+                    <value>&quot;1856&quot;</value>
+                    <value>0.19830799999999998</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-32' y='45' />
+          </annotation>
+        </annotations>
+      </table>
+      <simple-id uuid='{A6E55487-B0DF-434E-8F31-2293F7051A6B}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Nightingale&apos;s Coxcomb Dashboard'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontalignment='1' fontcolor='#555555' fontname='Georgia' fontsize='28' italic='true'>Coxcomb Diagram with Tableau</run>
+            <run>Æ&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98000' id='14' param='horz' type='layout-flow' w='98400' x='800' y='1000'>
+            <zone h='98000' id='11' param='vert' type='layout-flow' w='98400' x='800' y='1000'>
+              <zone fixed-size='167' h='21875' id='12' is-fixed='true' type='title' w='98400' x='800' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='76125' id='5' param='horz' type='layout-flow' w='98400' x='800' y='22875'>
+                <zone h='76125' id='3' type='layout-basic' w='98400' x='800' y='22875'>
+                  <zone h='76125' id='1' name='Coxcomb 1' w='49200' x='800' y='22875'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                      <format attr='background-color' value='#d9fffe' />
+                    </zone-style>
+                  </zone>
+                  <zone h='76125' id='9' name='Coxcomb 2' w='49200' x='50000' y='22875'>
+                    <zone-style>
+                      <format attr='border-color' value='#d9fffe' />
+                      <format attr='border-style' value='solid' />
+                      <format attr='border-width' value='1' />
+                      <format attr='margin' value='4' />
+                      <format attr='background-color' value='#d9fffe' />
+                    </zone-style>
+                  </zone>
+                </zone>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+            <format attr='background-color' value='#d9fffe' />
+          </zone-style>
+        </zone>
+        <zone forceUpdate='true' h='16875' id='15' type='text' w='13700' x='4300' y='28000'>
+          <formatted-text>
+            <run bold='true' fontcolor='#0055ff' fontname='Modern No. 20' fontsize='20'>■ disease</run>
+            <run>Æ&#10;</run>
+            <run bold='true' fontcolor='#000041' fontname='Modern No. 20' fontsize='20'>■ wound</run>
+            <run>Æ&#10;</run>
+            <run bold='true' fontcolor='#ffaaff' fontname='Modern No. 20' fontsize='20'>■ other</run>
+            <run>Æ&#10;</run>
+          </formatted-text>
+        </zone>
+        <zone forceUpdate='true' h='10375' id='32' type='text' w='53300' x='24300' y='15250'>
+          <formatted-text>
+            <run fontalignment='1' fontname='Modern No. 20' fontsize='16'>DIAGRAM OF THE CAUSES OF MORTALITY</run>
+            <run fontalignment='1'>Æ&#10;</run>
+            <run fontalignment='1' fontname='Modern No. 20' fontsize='16'>IN THE ARMY IN THE EAST</run>
+          </formatted-text>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <layout-options>
+            <title>
+              <formatted-text>
+                <run fontalignment='1' fontcolor='#555555' fontname='Georgia' fontsize='28' italic='true'>Coxcomb Diagram with Tableau</run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </title>
+          </layout-options>
+          <size maxheight='750' minheight='750' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='45' type='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='46' param='vert' type='layout-flow' w='98400' x='800' y='1000'>
+                <zone fixed-size='167' h='21875' id='12' type='title' w='98400' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='10375' id='32' type='text' w='53300' x='24300' y='15250'>
+                  <formatted-text>
+                    <run fontalignment='1' fontname='Modern No. 20' fontsize='16'>DIAGRAM OF THE CAUSES OF MORTALITY</run>
+                    <run fontalignment='1'>Æ&#10;</run>
+                    <run fontalignment='1' fontname='Modern No. 20' fontsize='16'>IN THE ARMY IN THE EAST</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='76125' id='1' is-fixed='true' name='Coxcomb 1' w='49200' x='800' y='22875'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                    <format attr='background-color' value='#d9fffe' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='76125' id='9' is-fixed='true' name='Coxcomb 2' w='49200' x='50000' y='22875'>
+                  <zone-style>
+                    <format attr='border-color' value='#d9fffe' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                    <format attr='background-color' value='#d9fffe' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='16875' id='15' type='text' w='13700' x='4300' y='28000'>
+                  <formatted-text>
+                    <run bold='true' fontcolor='#0055ff' fontname='Modern No. 20' fontsize='20'>■ disease</run>
+                    <run>Æ&#10;</run>
+                    <run bold='true' fontcolor='#000041' fontname='Modern No. 20' fontsize='20'>■ wound</run>
+                    <run>Æ&#10;</run>
+                    <run bold='true' fontcolor='#ffaaff' fontname='Modern No. 20' fontsize='20'>■ other</run>
+                    <run>Æ&#10;</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{70107CD2-2022-4B5B-9B09-A98106956EDA}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='51'>
+    <window class='worksheet' maximized='true' name='Coxcomb 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.05p0hvn08gnzdk160ni5y1tob883].[usr:Calculation_2293739616360706059:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card pane-specification-id='0' param='[federated.05p0hvn08gnzdk160ni5y1tob883].[avg:Value:qk]' type='size' />
+            <card pane-specification-id='0' param='[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616358367237:nk]</field>
+            <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Calculation_2293739616359809034:nk]</field>
+            <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Cause:nk]</field>
+            <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Month:nk]</field>
+            <field>[federated.05p0hvn08gnzdk160ni5y1tob883].[none:Year:ok]</field>
+          </color-one-way>
+        </highlight>
+        <floating-toolbar-visibility value='1' />
+      </viewpoint>
+      <simple-id uuid='{4E9E3D1C-30D1-4F51-9681-F61B656DDA9A}' />
+    </window>
+    <window class='worksheet' name='Coxcomb 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]' type='color' />
+            <card pane-specification-id='0' param='[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[avg:Value:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370114585:nk]</field>
+            <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Calculation_2293739616370200602:nk]</field>
+            <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Cause:nk]</field>
+            <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Month:nk]</field>
+            <field>[federated.0lkxadw0gjxtxq1g02nl413bcpdv].[none:Year:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{47EE0587-C247-492C-8A6A-126D058AA233}' />
+    </window>
+    <window class='dashboard' name='Nightingale&apos;s Coxcomb Dashboard'>
+      <viewpoints>
+        <viewpoint name='Coxcomb 1'>
+          <zoom type='entire-view' />
+          <floating-toolbar-visibility value='1' />
+        </viewpoint>
+        <viewpoint name='Coxcomb 2'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='1' />
+      <simple-id uuid='{3B13F714-4809-4A2D-B2E3-4990F2FF61DA}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Coxcomb 1' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Coxcomb 2' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Nightingale&apos;s Coxcomb Dashboard' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>
